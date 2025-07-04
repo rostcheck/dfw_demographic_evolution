@@ -152,5 +152,22 @@ The project uses a JSON configuration file (`counties.json`) to define which cou
 - Modern web browser for viewing visualizations
 
 ## Optional: Census API Key
-For faster data collection, get a free API key at: https://api.census.gov/data/key_signup.html
+
+For faster and more reliable data collection, get a free API key at: https://api.census.gov/data/key_signup.html
+
+### Setting up the API Key
+
+**Option 1: Environment Variable (Recommended)**
+```bash
+export CENSUS_API_KEY="your_api_key_here"
+```
+
+**Option 2: Interactive Prompt**
+The collector will prompt you for the API key if not found in the environment.
+
+### Benefits of Using an API Key
+- 5x faster data collection
+- Reduced timeout errors  
+- Higher success rate for large datasets
+- No rate limiting delays
 
