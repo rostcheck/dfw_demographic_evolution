@@ -171,3 +171,8 @@ The collector will prompt you for the API key if not found in the environment.
 - Higher success rate for large datasets
 - No rate limiting delays
 
+### Licensing
+This project is open-source, licensed under the MIT license. Data files are public works from the U.S. census.
+
+### AI disclosure
+The project was built by Amazon Q Developer CLI running Anthropic Claude 4 Sonnet.

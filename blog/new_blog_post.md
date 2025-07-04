@@ -8,7 +8,7 @@
 
 It started with a simple observation that many of us in North Texas have made: Frisco is growing *fast*. Living here, you can't help but notice the constant construction, the new neighborhoods sprouting up, the traffic patterns shifting as the city expands. But I wanted to understand the bigger picture - not just Frisco, but the entire Dallas-Fort Worth metropolitan evolution over the past two decades.
 
-So I opened up Amazon Q Developer CLI with what I thought was a straightforward request: "I need to get files of demographic information for the last 20 years, say from the US census or other sources, for North Texas counties around DFW."
+So I opened up [Amazon Q Developer CLI](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html?b=cli&p=overview&s=tiles) with what I thought was a straightforward request: "I need to get files of demographic information for the last 20 years, say from the US census or other sources, for North Texas counties around DFW."
 
 What happened next was nothing short of remarkable.
 
@@ -98,4 +98,4 @@ And that, I think, is the most magical part of all.
 
 ---
 
-*The complete source code, documentation, and collaborative principles for this project are available in the accompanying repository, demonstrating both the technical achievements and the process insights discussed in this reflection.*
+*The complete source code, documentation, and collaborative principles for this project are available in the accompanying [repository](https://github.com/rostcheck/dfw_demographic_evolution), demonstrating both the technical achievements and the process insights discussed in this reflection.*
