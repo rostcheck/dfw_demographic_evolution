@@ -45,6 +45,7 @@ Thumbs.db
 
 # Logs
 *.log
+run_log*
 
 # Temporary files
 *.tmp
@@ -58,3 +59,7 @@ api_keys.txt
 *_backup.csv
 *_temp.csv
 *_old.csv
+
+# Downloaded archives and shapefiles
+*.zip
+tl_*
