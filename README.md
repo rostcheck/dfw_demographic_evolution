@@ -4,7 +4,7 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 
 ## Features
 
-- **Data Collection**: Automated Census API data collection for 32+ DFW cities
+- **Data Collection**: Automated Census API data collection for cities in specified counties
 - **Analysis**: Population growth, demographic composition, and ancestry trend analysis
 - **Interactive Maps**: Web-based visualizations showing demographic changes over time
 - **Dashboard**: Comprehensive HTML dashboard with multiple visualization layers
@@ -26,10 +26,10 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 - Parker County
 - Wise County
 
-## Data Collected
+## Data Displayed
 - **Population**: Total population by city over time
-- **Race**: Detailed racial breakdown (White, Black, Asian, Hispanic/Latino, etc.)
-- **National Origin/Ancestry**: 25+ ancestry groups including German, Irish, Mexican, Chinese, Indian, Vietnamese, and more
+- **Racial Makeup**: Shows population percent identifying as: White, Black, Asian, Hispanic/Latino, Other
+
 
 ## Quick Start
 
@@ -40,17 +40,22 @@ This project collects and analyzes demographic data for cities in the Dallas-For
    pip install -r requirements.txt
    ```
 
-2. **Collect Data** (optional - data already included):
+2. **View Existing Visualizations**:
    ```bash
-   python census_data_collector_simple.py
+   python serve_maps.py
    ```
 
-3. **Run Analysis**:
+3. **Collect New Data** (optional - clean data already included):
    ```bash
-   python analyze_demographics.py
+   python incremental_collector.py
    ```
 
-4. **View Interactive Maps**:
+4. **Generate Visualizations**:
+   ```bash
+   python create_simple_expanded_visualization.py
+   ```
+
+5. **View Interactive Maps**:
    ```bash
    python serve_maps.py
    ```
@@ -58,23 +63,22 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 
 ## Files Overview
 
-### Data Collection
-- `census_data_collector_simple.py` - Main data collection script
-- `census_data_collector.py` - Alternative comprehensive collector
+### Core Scripts
+- `incremental_collector.py` - Main data collection script with resume capability
+- `create_simple_expanded_visualization.py` - Interactive map and dashboard generation
+- `serve_maps.py` - Local web server for viewing visualizations
 
-### Analysis
-- `analyze_demographics.py` - Statistical analysis and reporting
-- `create_map_visualization.py` - Interactive map generation
+### Utilities
+- `setup_api_key.py` - Census API key configuration helper
+- `check_data_status.py` - Data completeness verification
+- `clean_city_data.py` - Data quality cleaning utility
 
-### Visualizations
-- `dfw_demographic_dashboard.html` - Main interactive dashboard
-- `dfw_demographic_map.html` - Detailed demographic map
-- `dfw_population_timeline.html` - Population growth timeline
-- `serve_maps.py` - Local web server for viewing maps
+### Generated Visualizations
+- `north_texas_51_cities_dashboard.html` - Main interactive dashboard
+- `north_texas_51_cities_map.html` - Interactive demographic map
 
 ### Data Files
-- `dfw_major_cities_demographics_*.csv` - Raw collected data
-- `dfw_demographics_cleaned.csv` - Processed and cleaned data
+- `north_texas_demographics_cleaned_fixed.csv` - Clean processed dataset
 
 ## Key Findings
 
@@ -119,26 +123,3 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 ## Optional: Census API Key
 For faster data collection, get a free API key at: https://api.census.gov/data/key_signup.html
 
-## Usage Examples
-
-### View Specific City Trends
-```python
-# Load and filter data
-df = pd.read_csv('dfw_demographics_cleaned.csv')
-dallas_data = df[df['city'] == 'Dallas city']
-print(dallas_data[['year', 'total_population', 'hispanic_pct']])
-```
-
-### Custom Analysis
-```python
-# Calculate diversity index
-df['diversity_index'] = 1 - (
-    (df['white_pct']/100)**2 + 
-    (df['black_pct']/100)**2 + 
-    (df['asian_pct']/100)**2 + 
-    (df['hispanic_pct']/100)**2
-)
-```
-
-## Contributing
-Feel free to extend the analysis, add new visualizations, or include additional demographic variables. The modular design makes it easy to customize for other metropolitan areas or time periods.
