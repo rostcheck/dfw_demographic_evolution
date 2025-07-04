@@ -12,21 +12,13 @@ from pathlib import Path
 def load_incremental_data():
     """Load the cleaned incremental data"""
     # Try county-based file first, then fall back to older files
-    file_paths = [
-        "north_texas_county_demographics.csv",
-        "north_texas_demographics_cleaned_fixed.csv",
-        "north_texas_expanded_demographics_incremental.csv"
-    ]
+    data_file = "north_texas_county_demographics.csv"
     
-    df = None
-    for file_path in file_paths:
-        if Path(file_path).exists():
-            df = pd.read_csv(file_path)
-            print(f"✓ Loaded {len(df)} records for {df['city'].nunique()} cities from {file_path}")
-            break
+    if not Path(data_file).exists():
+        raise FileNotFoundError(f"Data file not found: {data_file}")
     
-    if df is None:
-        raise FileNotFoundError("No demographic data files found")
+    df = pd.read_csv(data_file)
+    print(f"✓ Loaded {len(df)} records for {df['city'].nunique()} cities from {data_file}")
     
     # Parse coordinates from string format
     def parse_coords(coord_str):

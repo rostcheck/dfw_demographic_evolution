@@ -71,8 +71,6 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 
 ### Utilities
 - `setup_api_key.py` - Census API key configuration helper
-- `check_data_status.py` - Data completeness verification
-- `clean_city_data.py` - Data quality cleaning utility
 
 ### Generated Visualizations
 - `north_texas_cities_dashboard.html` - Main interactive dashboard
@@ -82,7 +80,7 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 - **`counties.json`** - County configuration file defining target counties
 
 ### Data Files
-- `north_texas_demographics_cleaned_fixed.csv` - Clean processed dataset
+- `north_texas_county_demographics.csv` - Complete demographic dataset for all DFW cities
 
 ## Configuration File
 
