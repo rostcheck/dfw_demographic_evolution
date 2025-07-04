@@ -21,7 +21,54 @@ class CountyBasedDataCollector:
     def __init__(self, api_key: str = None):
         self.base_url = "https://api.census.gov/data"
         self.counties = self.load_counties_config()
+        self.coordinates_lookup = self.load_coordinates_lookup()
         self.api_key = self.get_api_key(api_key)
+        self.dallas_coords = (32.7767, -96.7970)  # Dallas coordinates for distance calculation
+        
+    def load_coordinates_lookup(self) -> Dict[int, Dict]:
+        """Load place coordinates from the Texas places coordinate file"""
+        try:
+            import pandas as pd
+            coords_df = pd.read_csv('texas_place_coordinates.csv')
+            
+            # Create lookup dictionary: place_fips -> {lat, lon, coordinates}
+            lookup = {}
+            for _, row in coords_df.iterrows():
+                lookup[int(row['place_fips'])] = {
+                    'latitude': row['latitude'],
+                    'longitude': row['longitude'], 
+                    'coordinates': row['coordinates']
+                }
+                
+            print(f"📍 Loaded coordinates for {len(lookup)} Texas places")
+            return lookup
+            
+        except FileNotFoundError:
+            print("⚠️ texas_place_coordinates.csv not found - coordinates will be missing")
+            return {}
+        except Exception as e:
+            print(f"⚠️ Error loading coordinates: {e}")
+            return {}
+            
+    def calculate_distance(self, coord1, coord2):
+        """Calculate distance between two coordinates in miles"""
+        import math
+        
+        lat1, lon1 = coord1
+        lat2, lon2 = coord2
+        
+        # Convert to radians
+        lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
+        
+        # Haversine formula
+        dlat = lat2 - lat1
+        dlon = lon2 - lon1
+        a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+        c = 2 * math.asin(math.sqrt(a))
+        
+        # Earth's radius in miles
+        r = 3956
+        return c * r
         
     def get_api_key(self, provided_key: str = None) -> str:
         """Get API key from environment, parameter, or user prompt"""
@@ -156,6 +203,74 @@ class CountyBasedDataCollector:
                 
         return target_places
         
+    def backfill_missing_data(self, output_file: str = "north_texas_county_demographics.csv"):
+        """Add missing coordinates and distance data to existing records"""
+        
+        if not Path(output_file).exists():
+            return  # No existing file to backfill
+            
+        print(f"🔄 Checking for missing coordinate/distance data...")
+        
+        try:
+            import pandas as pd
+            df = pd.read_csv(output_file)
+            
+            # Check what columns are missing
+            required_columns = ['latitude', 'longitude', 'coordinates', 'distance_from_dallas']
+            missing_columns = [col for col in required_columns if col not in df.columns]
+            
+            if not missing_columns:
+                missing_coords = df['coordinates'].isna().sum()
+                if missing_coords == 0:
+                    print("   ✅ All records have complete coordinate data")
+                    return
+                    
+            print(f"   📍 Adding missing data to {len(df)} records...")
+            
+            # Add missing columns
+            for col in missing_columns:
+                if col in ['latitude', 'longitude', 'distance_from_dallas']:
+                    df[col] = 0.0
+                else:
+                    df[col] = None
+                    
+            # Fill in missing coordinate and distance data
+            updated_count = 0
+            for idx, row in df.iterrows():
+                place_fips_int = int(row['place_fips'])
+                
+                # Check if this record needs coordinate data
+                needs_update = (pd.isna(row.get('coordinates')) or 
+                              row.get('coordinates') == '' or
+                              pd.isna(row.get('distance_from_dallas')) or
+                              row.get('distance_from_dallas') == 0)
+                
+                if needs_update and place_fips_int in self.coordinates_lookup:
+                    coord_data = self.coordinates_lookup[place_fips_int]
+                    df.at[idx, 'latitude'] = coord_data['latitude']
+                    df.at[idx, 'longitude'] = coord_data['longitude']
+                    df.at[idx, 'coordinates'] = coord_data['coordinates']
+                    
+                    # Calculate distance from Dallas
+                    city_coords = (coord_data['latitude'], coord_data['longitude'])
+                    distance = self.calculate_distance(self.dallas_coords, city_coords)
+                    df.at[idx, 'distance_from_dallas'] = round(distance, 1)
+                    
+                    updated_count += 1
+                elif needs_update:
+                    # Default to Dallas coordinates
+                    df.at[idx, 'latitude'] = self.dallas_coords[0]
+                    df.at[idx, 'longitude'] = self.dallas_coords[1]
+                    df.at[idx, 'coordinates'] = f"({self.dallas_coords[0]}, {self.dallas_coords[1]})"
+                    df.at[idx, 'distance_from_dallas'] = 0.0
+                    
+            # Save updated dataset
+            df.to_csv(output_file, index=False)
+            print(f"   ✅ Updated {updated_count} records with coordinate/distance data")
+            
+        except Exception as e:
+            print(f"   ⚠️ Error backfilling data: {e}")
+            
     def get_demographic_data(self, place_fips, year: int, max_retries: int = 3) -> Dict:
         """Get demographic data for a specific place and year with retry logic"""
         
@@ -318,6 +433,25 @@ class CountyBasedDataCollector:
                     data['county_fips'] = self.counties[primary_county]
                     data['all_counties'] = ', '.join(counties)
                     
+                    # Add coordinates and distance if available
+                    place_fips_int = int(place_fips)
+                    if place_fips_int in self.coordinates_lookup:
+                        coord_data = self.coordinates_lookup[place_fips_int]
+                        data['latitude'] = coord_data['latitude']
+                        data['longitude'] = coord_data['longitude']
+                        data['coordinates'] = coord_data['coordinates']
+                        
+                        # Calculate distance from Dallas
+                        city_coords = (coord_data['latitude'], coord_data['longitude'])
+                        distance = self.calculate_distance(self.dallas_coords, city_coords)
+                        data['distance_from_dallas'] = round(distance, 1)
+                    else:
+                        # Default to Dallas coordinates if not found
+                        data['latitude'] = self.dallas_coords[0]
+                        data['longitude'] = self.dallas_coords[1]
+                        data['coordinates'] = f"({self.dallas_coords[0]}, {self.dallas_coords[1]})"
+                        data['distance_from_dallas'] = 0.0
+                    
                     all_data.append(data)
                     existing_keys.add(key)
                     completed += 1
@@ -367,14 +501,17 @@ class CountyBasedDataCollector:
         print("🌟 COUNTY-BASED DEMOGRAPHIC DATA COLLECTION")
         print("=" * 50)
         
-        # Step 1: Discover all places in counties
+        # Step 1: Backfill any missing coordinate/distance data
+        self.backfill_missing_data()
+        
+        # Step 2: Discover all places in counties
         places = self.get_all_places_in_counties()
         
         if not places:
             print("❌ No places found in configured counties")
             return
             
-        # Step 2: Collect demographic data
+        # Step 3: Collect demographic data
         df = self.collect_data_for_places(places, years)
         
         print(f"\n🎉 Collection Summary:")

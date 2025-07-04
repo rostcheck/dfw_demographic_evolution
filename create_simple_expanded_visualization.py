@@ -11,8 +11,9 @@ from pathlib import Path
 
 def load_incremental_data():
     """Load the cleaned incremental data"""
-    # Try cleaned file first, then fall back to original
+    # Try county-based file first, then fall back to older files
     file_paths = [
+        "north_texas_county_demographics.csv",
         "north_texas_demographics_cleaned_fixed.csv",
         "north_texas_expanded_demographics_incremental.csv"
     ]
@@ -36,6 +37,11 @@ def load_incremental_data():
         except:
             return None
     
+    # Handle coordinates - add them if missing
+    if 'coordinates' not in df.columns:
+        print("📍 Adding coordinates for mapping...")
+        df['coordinates'] = df['city'].apply(get_city_coordinates)
+        
     df['parsed_coords'] = df['coordinates'].apply(parse_coords)
     
     # Calculate demographic percentages
