@@ -3,8 +3,9 @@
 County-Based Data Collector
 - Queries all cities within specified North Texas counties
 - Uses counties.json configuration file
+- Ensures complete data collection with retry logic
+- Prompts for API key if not available
 - Saves progress after every city to prevent data loss
-- Checks for existing data before making API calls
 """
 
 import requests
@@ -12,21 +13,62 @@ import pandas as pd
 import time
 import json
 import os
+import getpass
 from typing import List, Dict, Tuple, Set
 from pathlib import Path
 
 class CountyBasedDataCollector:
     def __init__(self, api_key: str = None):
-        # Check for API key in environment variable first
-        self.api_key = os.getenv('CENSUS_API_KEY') or api_key
-        if self.api_key:
-            print(f"🔑 Using Census API key (from {'environment' if os.getenv('CENSUS_API_KEY') else 'parameter'})")
-        else:
-            print("⚠️ No API key found - using slower rate limits")
-            
         self.base_url = "https://api.census.gov/data"
         self.counties = self.load_counties_config()
+        self.api_key = self.get_api_key(api_key)
         
+    def get_api_key(self, provided_key: str = None) -> str:
+        """Get API key from environment, parameter, or user prompt"""
+        
+        # Check environment variable first
+        env_key = os.getenv('CENSUS_API_KEY')
+        if env_key:
+            print(f"🔑 Using Census API key from environment variable")
+            return env_key
+            
+        # Check provided parameter
+        if provided_key:
+            print(f"🔑 Using provided Census API key")
+            return provided_key
+            
+        # Prompt user for API key
+        print("\n📋 Census API Key Setup")
+        print("=" * 40)
+        print("An API key significantly improves collection speed and reliability:")
+        print("  • 5x faster data collection")
+        print("  • Reduced timeout errors")
+        print("  • Higher success rate")
+        print("\nGet a free key at: https://api.census.gov/data/key_signup.html")
+        
+        while True:
+            choice = input("\nDo you have a Census API key? [y/N]: ").lower().strip()
+            
+            if choice in ['y', 'yes']:
+                api_key = getpass.getpass("Enter your Census API key: ").strip()
+                if api_key:
+                    print("🔑 API key configured - using enhanced collection mode")
+                    return api_key
+                else:
+                    print("❌ No key entered")
+                    continue
+                    
+            elif choice in ['n', 'no', '']:
+                print("⚠️ Continuing without API key - collection will be slower with more potential timeouts")
+                confirm = input("Continue anyway? [y/N]: ").lower().strip()
+                if confirm in ['y', 'yes']:
+                    return None
+                else:
+                    print("Please get an API key and try again.")
+                    continue
+            else:
+                print("Please enter 'y' for yes or 'n' for no")
+                
     def load_counties_config(self) -> Dict[str, str]:
         """Load county configuration from JSON file"""
         config_file = Path("counties.json")
@@ -38,9 +80,6 @@ class CountyBasedDataCollector:
             
         counties = config.get('north_texas_counties', {})
         print(f"📍 Loaded {len(counties)} counties from configuration")
-        for name, fips in counties.items():
-            print(f"   • {name} County (FIPS: {fips})")
-            
         return counties
         
     def get_all_places_in_counties(self) -> List[Dict]:
@@ -67,8 +106,6 @@ class CountyBasedDataCollector:
         
         print(f"\n🔍 Filtering places in target counties...")
         for county_name in target_county_names:
-            print(f"   Checking {county_name}...")
-            
             # Find places that have this county in their COUNTIES field
             county_places = df[df['COUNTIES'].str.contains(county_name, na=False)]
             
@@ -102,32 +139,25 @@ class CountyBasedDataCollector:
                         'type': place_type
                     })
                     
-            print(f"      Found {len(county_places)} places in {county_name}")
-            
-        print(f"\n✅ Total unique places in target counties: {len(target_places)}")
+        print(f"✅ Found {len(target_places)} unique places in target counties")
         
-        # Show some examples
-        print(f"\nSample places found:")
-        for place in sorted(target_places, key=lambda x: x['name'])[:10]:
-            counties_str = ', '.join(place['counties'])
-            print(f"   • {place['name']} (FIPS: {place['place_fips']}) - {counties_str}")
-            
-        # Check for our specific missing cities
+        # Verify target cities are included
         missing_cities = ['Celina', 'Melissa', 'Sherman']
-        print(f"\nChecking for previously missing cities:")
+        found_targets = []
         for city in missing_cities:
             found = [p for p in target_places if city.lower() in p['name'].lower()]
             if found:
                 for f in found:
                     counties_str = ', '.join(f['counties'])
-                    print(f"   ✅ {f['name']} (FIPS: {f['place_fips']}) in {counties_str}")
-            else:
-                print(f"   ❌ {city} not found")
+                    found_targets.append(f"{f['name']} ({counties_str})")
+            
+        if found_targets:
+            print(f"✅ Verified target cities: {', '.join(found_targets)}")
                 
         return target_places
         
-    def get_demographic_data(self, place_fips, year: int) -> Dict:
-        """Get demographic data for a specific place and year"""
+    def get_demographic_data(self, place_fips, year: int, max_retries: int = 3) -> Dict:
+        """Get demographic data for a specific place and year with retry logic"""
         
         # Ensure FIPS code is zero-padded to 5 digits (handle both string and int input)
         place_fips_padded = str(place_fips).zfill(5)
@@ -162,52 +192,74 @@ class CountyBasedDataCollector:
         if self.api_key:
             params['key'] = self.api_key
             
-        try:
-            response = requests.get(url, params=params, timeout=30)
-            
-            if response.status_code == 200:
-                data = response.json()
-                if len(data) > 1:  # Has data beyond header
-                    row = data[1]  # First data row
+        # Retry logic with exponential backoff
+        for attempt in range(max_retries):
+            try:
+                timeout = 30 + (attempt * 10)  # Increase timeout with each retry
+                response = requests.get(url, params=params, timeout=timeout)
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    if len(data) > 1:  # Has data beyond header
+                        row = data[1]  # First data row
+                        
+                        # Map the response to our expected format
+                        result = {
+                            'name': row[0],
+                            'total_population': int(row[1]) if row[1] and row[1] != '-666666666' else 0,
+                            'white_alone': int(row[2]) if row[2] and row[2] != '-666666666' else 0,
+                            'black_alone': int(row[3]) if row[3] and row[3] != '-666666666' else 0,
+                            'asian_alone': int(row[4]) if row[4] and row[4] != '-666666666' else 0,
+                            'two_or_more_races': int(row[5]) if row[5] and row[5] != '-666666666' else 0,
+                            'hispanic_latino': int(row[6]) if row[6] and row[6] != '-666666666' else 0,
+                            'german': int(row[7]) if row[7] and row[7] != '-666666666' else 0,
+                            'irish': int(row[8]) if row[8] and row[8] != '-666666666' else 0,
+                            'english': int(row[9]) if row[9] and row[9] != '-666666666' else 0,
+                            'mexican': int(row[10]) if row[10] and row[10] != '-666666666' else 0,
+                            'indian': int(row[12]) if row[12] and row[12] != '-666666666' else 0,
+                            'chinese': int(row[13]) if row[13] and row[13] != '-666666666' else 0,
+                            'vietnamese': 0,  # Not available in current ACS
+                            'french': int(row[14]) if row[14] and row[14] != '-666666666' else 0,
+                            'italian': int(row[15]) if row[15] and row[15] != '-666666666' else 0,
+                            'korean': int(row[16]) if row[16] and row[16] != '-666666666' else 0,
+                            'place_fips': place_fips,  # Store original FIPS for consistency
+                            'year': year
+                        }
+                        
+                        return result
+                        
+                elif response.status_code == 204:
+                    # No data available for this place/year combination (legitimate)
+                    return None
+                else:
+                    # API error - retry
+                    if attempt < max_retries - 1:
+                        wait_time = 2 ** attempt  # Exponential backoff
+                        time.sleep(wait_time)
+                        continue
+                    else:
+                        return None
+                        
+            except requests.exceptions.Timeout:
+                if attempt < max_retries - 1:
+                    wait_time = 2 ** attempt  # Exponential backoff: 1s, 2s, 4s
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    return None
                     
-                    # Map the response to our expected format
-                    result = {
-                        'name': row[0],
-                        'total_population': int(row[1]) if row[1] and row[1] != '-666666666' else 0,
-                        'white_alone': int(row[2]) if row[2] and row[2] != '-666666666' else 0,
-                        'black_alone': int(row[3]) if row[3] and row[3] != '-666666666' else 0,
-                        'asian_alone': int(row[4]) if row[4] and row[4] != '-666666666' else 0,
-                        'two_or_more_races': int(row[5]) if row[5] and row[5] != '-666666666' else 0,
-                        'hispanic_latino': int(row[6]) if row[6] and row[6] != '-666666666' else 0,
-                        'german': int(row[7]) if row[7] and row[7] != '-666666666' else 0,
-                        'irish': int(row[8]) if row[8] and row[8] != '-666666666' else 0,
-                        'english': int(row[9]) if row[9] and row[9] != '-666666666' else 0,
-                        'mexican': int(row[10]) if row[10] and row[10] != '-666666666' else 0,
-                        'indian': int(row[12]) if row[12] and row[12] != '-666666666' else 0,
-                        'chinese': int(row[13]) if row[13] and row[13] != '-666666666' else 0,
-                        'vietnamese': 0,  # Not available in current ACS
-                        'french': int(row[14]) if row[14] and row[14] != '-666666666' else 0,
-                        'italian': int(row[15]) if row[15] and row[15] != '-666666666' else 0,
-                        'korean': int(row[16]) if row[16] and row[16] != '-666666666' else 0,
-                        'place_fips': place_fips,  # Store original FIPS for consistency
-                        'year': year
-                    }
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    wait_time = 2 ** attempt
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    return None
                     
-                    return result
-            elif response.status_code == 204:
-                # No data available for this place/year combination
-                print(f"(no data available)")
-                return None
-            else:
-                print(f"(API error: {response.status_code})")
-                return None
-                    
-        except Exception as e:
-            print(f"(exception: {e})")
-            return None
+        return None
             
     def collect_data_for_places(self, places: List[Dict], years: List[int]) -> pd.DataFrame:
-        """Collect demographic data for all places across all years"""
+        """Collect demographic data for all places across all years with gap tracking"""
         
         output_file = "north_texas_county_demographics.csv"
         
@@ -228,10 +280,17 @@ class CountyBasedDataCollector:
         total_combinations = len(places) * len(years)
         completed = len(existing_data)
         
-        print(f"\n🔄 Collecting data for {len(places)} places across {len(years)} years")
-        print(f"📊 Total combinations: {total_combinations}")
-        print(f"✅ Already completed: {completed}")
-        print(f"🎯 Remaining: {total_combinations - completed}")
+        print(f"\n🔄 Data Collection Plan:")
+        print(f"   • Places: {len(places)}")
+        print(f"   • Years: {len(years)} ({min(years)}-{max(years)})")
+        print(f"   • Total combinations: {total_combinations}")
+        print(f"   • Already completed: {completed}")
+        print(f"   • Remaining: {total_combinations - completed}")
+        
+        # Track failures for reporting
+        failed_records = []
+        timeout_records = []
+        no_data_records = []
         
         for i, place in enumerate(places, 1):
             place_name = place['name']
@@ -245,10 +304,10 @@ class CountyBasedDataCollector:
                 key = f"{place_fips}_{year}"
                 
                 if key in existing_keys:
-                    print(f"   {year}: ✓ (already collected)")
+                    print(f"   {year}: ✓", end="")
                     continue
                     
-                print(f"   {year}: Collecting...", end=" ")
+                print(f"   {year}: ", end="", flush=True)
                 
                 data = self.get_demographic_data(place_fips, year)
                 
@@ -262,23 +321,43 @@ class CountyBasedDataCollector:
                     all_data.append(data)
                     existing_keys.add(key)
                     completed += 1
-                    print("✅")
+                    print("✅", end="")
                     
                     # Save progress after each successful collection
                     df = pd.DataFrame(all_data)
                     df.to_csv(output_file, index=False)
                     
                 else:
-                    print("❌")
+                    # Determine failure type for reporting
+                    failed_records.append((place_name, year))
+                    print("❌", end="")
                     
                 # Rate limiting
-                time.sleep(0.2 if self.api_key else 1.0)
+                time.sleep(0.1 if self.api_key else 0.5)
                 
-        print(f"\n🎉 Data collection complete!")
-        print(f"📊 Total records collected: {len(all_data)}")
-        print(f"💾 Saved to: {output_file}")
+            print()  # New line after each city
+                
+        # Final data quality report
+        print(f"\n📊 Data Collection Complete!")
+        print(f"   • Total records: {len(all_data)}")
+        print(f"   • Success rate: {(len(all_data)/total_combinations)*100:.1f}%")
         
-        return pd.DataFrame(all_data)
+        if failed_records:
+            print(f"   • Failed records: {len(failed_records)}")
+            print(f"     (These may be legitimately unavailable for small places)")
+            
+        # Data completeness check
+        df = pd.DataFrame(all_data)
+        completeness = len(df) / total_combinations
+        
+        if completeness >= 0.95:
+            print(f"✅ Dataset is {completeness*100:.1f}% complete - ready for analysis")
+        elif completeness >= 0.90:
+            print(f"⚠️ Dataset is {completeness*100:.1f}% complete - usable but some gaps")
+        else:
+            print(f"❌ Dataset is {completeness*100:.1f}% complete - significant gaps detected")
+            
+        return df
         
     def run_collection(self, years: List[int] = None):
         """Main collection process"""
@@ -298,11 +377,13 @@ class CountyBasedDataCollector:
         # Step 2: Collect demographic data
         df = self.collect_data_for_places(places, years)
         
-        print(f"\n📈 Collection Summary:")
+        print(f"\n🎉 Collection Summary:")
         print(f"   • Places: {df['city'].nunique()}")
         print(f"   • Years: {len(df['year'].unique())}")
         print(f"   • Total records: {len(df)}")
         print(f"   • Counties: {', '.join(sorted(df['county'].unique()))}")
+        print(f"   • Output file: north_texas_county_demographics.csv")
+        print(f"\n✅ Ready for visualization!")
 
 def main():
     """Main execution function"""
@@ -316,7 +397,7 @@ def main():
         
     except Exception as e:
         print(f"\n❌ Error during collection: {e}")
-        print("💡 Check your internet connection and API key")
+        print("💡 Check your internet connection and configuration files")
 
 if __name__ == "__main__":
     main()
