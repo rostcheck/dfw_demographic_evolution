@@ -74,8 +74,8 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 - `clean_city_data.py` - Data quality cleaning utility
 
 ### Generated Visualizations
-- `north_texas_51_cities_dashboard.html` - Main interactive dashboard
-- `north_texas_51_cities_map.html` - Interactive demographic map
+- `north_texas_cities_dashboard.html` - Main interactive dashboard
+- `north_texas_cities_map.html` - Interactive demographic map
 
 ### Data Files
 - `north_texas_demographics_cleaned_fixed.csv` - Clean processed dataset

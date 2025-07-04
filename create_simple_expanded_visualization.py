@@ -407,7 +407,7 @@ def create_dashboard(df):
     <div class="map-container">
         <h2>Interactive Demographic Map - All {total_cities} Cities</h2>
         <p>Explore all {total_cities} cities in the expanded Dallas-Fort Worth region. Toggle between 2009/2022 demographics and population growth patterns. Every city in the dataset is represented with detailed demographic breakdowns.</p>
-        <iframe src="north_texas_51_cities_map.html"></iframe>
+        <iframe src="north_texas_cities_map.html"></iframe>
     </div>
     
     <div class="insights-grid">
@@ -471,20 +471,20 @@ def main():
         # Create map
         print("📍 Creating interactive map...")
         expanded_map = create_expanded_map(df)
-        expanded_map.save('north_texas_51_cities_map.html')
-        print("✓ Saved: north_texas_51_cities_map.html")
+        expanded_map.save('north_texas_cities_map.html')
+        print("✓ Saved: north_texas_cities_map.html")
         
         # Create dashboard
         print("📊 Creating dashboard...")
         dashboard_html = create_dashboard(df)
-        with open('north_texas_51_cities_dashboard.html', 'w') as f:
+        with open('north_texas_cities_dashboard.html', 'w') as f:
             f.write(dashboard_html)
-        print("✓ Saved: north_texas_51_cities_dashboard.html")
+        print("✓ Saved: north_texas_cities_dashboard.html")
         
         print(f"\n🎉 SUCCESS! Visualizations created for {df['city'].nunique()} cities!")
         print("Files created:")
-        print("  • north_texas_51_cities_dashboard.html - Main dashboard")
-        print("  • north_texas_51_cities_map.html - Interactive map")
+        print("  • north_texas_cities_dashboard.html - Main dashboard")
+        print("  • north_texas_cities_map.html - Interactive map")
         
         # Show summary
         print(f"\n📈 Dataset Summary:")

@@ -17,8 +17,8 @@ def start_server(port=8000):
     
     # Check which dashboard files exist
     dashboard_files = []
-    if Path('north_texas_51_cities_dashboard.html').exists():
-        dashboard_files.append(('north_texas_51_cities_dashboard.html', '51 Cities Dashboard (Latest)'))
+    if Path('north_texas_cities_dashboard.html').exists():
+        dashboard_files.append(('north_texas_cities_dashboard.html', 'North Texas Cities Dashboard (Latest)'))
     if Path('north_texas_expanded_dashboard.html').exists():
         dashboard_files.append(('north_texas_expanded_dashboard.html', 'Expanded Dashboard'))
     if Path('dfw_demographic_dashboard.html').exists():
@@ -41,8 +41,8 @@ def start_server(port=8000):
                     print(f"   • {description}: http://localhost:{port}/{filename}")
             
             print(f"🗺️  Direct map files:")
-            if Path('north_texas_51_cities_map.html').exists():
-                print(f"   • 51 Cities Map: http://localhost:{port}/north_texas_51_cities_map.html")
+            if Path('north_texas_cities_map.html').exists():
+                print(f"   • North Texas Cities Map: http://localhost:{port}/north_texas_cities_map.html")
             if Path('dfw_demographic_map.html').exists():
                 print(f"   • Original Map: http://localhost:{port}/dfw_demographic_map.html")
             
