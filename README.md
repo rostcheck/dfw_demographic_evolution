@@ -48,12 +48,12 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 
 3. **Collect New Data** (optional - clean data already included):
    ```bash
-   python incremental_collector.py
+   python collect_data.py
    ```
 
 4. **Generate Visualizations**:
    ```bash
-   python create_simple_expanded_visualization.py
+   python create_visualization.py
    ```
 
 5. **View Interactive Maps**:
@@ -65,8 +65,8 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 ## Files Overview
 
 ### Core Scripts
-- `incremental_collector.py` - Main data collection script with resume capability
-- `create_simple_expanded_visualization.py` - Interactive map and dashboard generation
+- `collect_data.py` - Main data collection script with resume capability
+- `create_visualization.py` - Interactive map and dashboard generation
 - `serve_maps.py` - Local web server for viewing visualizations
 
 ### Utilities
