@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_926812ea97ba894bcb5bfe7ddaee9a3c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <h2 style="position: fixed; 
+               top: 10px; left: 50px; width: 400px; height: 60px; 
+               background-color: white; border: 2px solid grey; z-index:9999; 
+               font-size: 18px; padding: 10px; font-family: Arial;">
+    North Texas Regional Overview
+    </h2>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; left: 50px; width: 200px; height: 200px; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:12px; padding: 10px; font-family: Arial;">
+    <h4 style="margin-top: 0;">City Size Categories</h4>
+    <div><span style="color: darkred;">●</span> Metropolis (500K+)</div>
+    <div><span style="color: red;">●</span> Major City (200K+)</div>
+    <div><span style="color: orange;">●</span> Large City (100K+)</div>
+    <div><span style="color: yellow;">●</span> Medium City (50K+)</div>
+    <div><span style="color: lightgreen;">●</span> Small City (25K+)</div>
+    <div><span style="color: lightblue;">●</span> Town (10K+)</div>
+    <div><span style="color: gray;">●</span> Small Town (&lt;10K)</div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_926812ea97ba894bcb5bfe7ddaee9a3c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_926812ea97ba894bcb5bfe7ddaee9a3c = L.map(
+                "map_926812ea97ba894bcb5bfe7ddaee9a3c",
+                {
+                    center: [33.0, -96.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_bc0279adb9867863de08d76df559d765 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_bc0279adb9867863de08d76df559d765.addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+            var circle_marker_04bcb5a02ddff43b3f0fc484afdf7cd8 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_4b53de968b05f71d3ce1383edba02e62 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da98629d23fe18abd4f699898e0fd205 = $(`<div id="html_da98629d23fe18abd4f699898e0fd205" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Dallas city</h4>                 <p><strong>Population:</strong> 1,300,642</p>                 <p><strong>Category:</strong> Metropolis</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_4b53de968b05f71d3ce1383edba02e62.setContent(html_da98629d23fe18abd4f699898e0fd205);
+            
+        
+
+        circle_marker_04bcb5a02ddff43b3f0fc484afdf7cd8.bindPopup(popup_4b53de968b05f71d3ce1383edba02e62)
+        ;
+
+        
+    
+    
+            circle_marker_04bcb5a02ddff43b3f0fc484afdf7cd8.bindTooltip(
+                `<div>
+                     Dallas city: 1,300,642 (Metropolis)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_95caf835d9082e10d492517d4abef02e = L.circleMarker(
+                [32.7555, -97.3308],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_4795ca171dd35258fdbf645823ff9015 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_18ffeb71532539fad94784e262bbdaca = $(`<div id="html_18ffeb71532539fad94784e262bbdaca" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Fort Worth city</h4>                 <p><strong>Population:</strong> 924,663</p>                 <p><strong>Category:</strong> Metropolis</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_4795ca171dd35258fdbf645823ff9015.setContent(html_18ffeb71532539fad94784e262bbdaca);
+            
+        
+
+        circle_marker_95caf835d9082e10d492517d4abef02e.bindPopup(popup_4795ca171dd35258fdbf645823ff9015)
+        ;
+
+        
+    
+    
+            circle_marker_95caf835d9082e10d492517d4abef02e.bindTooltip(
+                `<div>
+                     Fort Worth city: 924,663 (Metropolis)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ca77dfbaaa8dcd5814bcc43aca1810ab = L.circleMarker(
+                [32.7357, -97.1081],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_4f7d0c70760b668afe25d8cbce80d14f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2fb7e19468f5c2df93f3e7636ebdab6c = $(`<div id="html_2fb7e19468f5c2df93f3e7636ebdab6c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Arlington city</h4>                 <p><strong>Population:</strong> 393,469</p>                 <p><strong>Category:</strong> Major City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_4f7d0c70760b668afe25d8cbce80d14f.setContent(html_2fb7e19468f5c2df93f3e7636ebdab6c);
+            
+        
+
+        circle_marker_ca77dfbaaa8dcd5814bcc43aca1810ab.bindPopup(popup_4f7d0c70760b668afe25d8cbce80d14f)
+        ;
+
+        
+    
+    
+            circle_marker_ca77dfbaaa8dcd5814bcc43aca1810ab.bindTooltip(
+                `<div>
+                     Arlington city: 393,469 (Major City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c02b312c8f6670064a54b3b44bde5230 = L.circleMarker(
+                [33.0198, -96.6989],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_0f50c0d7ad0cd2febe2b162cb92caa19 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a3c71e4548470b35932773eca7c3059 = $(`<div id="html_0a3c71e4548470b35932773eca7c3059" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Plano city</h4>                 <p><strong>Population:</strong> 284,948</p>                 <p><strong>Category:</strong> Major City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_0f50c0d7ad0cd2febe2b162cb92caa19.setContent(html_0a3c71e4548470b35932773eca7c3059);
+            
+        
+
+        circle_marker_c02b312c8f6670064a54b3b44bde5230.bindPopup(popup_0f50c0d7ad0cd2febe2b162cb92caa19)
+        ;
+
+        
+    
+    
+            circle_marker_c02b312c8f6670064a54b3b44bde5230.bindTooltip(
+                `<div>
+                     Plano city: 284,948 (Major City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_753e21b13ac973100b4053723a526d18 = L.circleMarker(
+                [32.9126, -96.6389],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_bd96a4635aeb7226588056c1e81845cd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_114847d1f92f1795ae1db32cda85bfc6 = $(`<div id="html_114847d1f92f1795ae1db32cda85bfc6" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Garland city</h4>                 <p><strong>Population:</strong> 244,026</p>                 <p><strong>Category:</strong> Major City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_bd96a4635aeb7226588056c1e81845cd.setContent(html_114847d1f92f1795ae1db32cda85bfc6);
+            
+        
+
+        circle_marker_753e21b13ac973100b4053723a526d18.bindPopup(popup_bd96a4635aeb7226588056c1e81845cd)
+        ;
+
+        
+    
+    
+            circle_marker_753e21b13ac973100b4053723a526d18.bindTooltip(
+                `<div>
+                     Garland city: 244,026 (Major City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3a076d01f9517668a3b3c384725e0fcb = L.circleMarker(
+                [32.814, -96.9489],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_6cb9d6ef74599e80edc4ae3ea3fe06a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_75f5fb0a75ded5fbb626933e27053aaf = $(`<div id="html_75f5fb0a75ded5fbb626933e27053aaf" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Irving city</h4>                 <p><strong>Population:</strong> 254,962</p>                 <p><strong>Category:</strong> Major City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_6cb9d6ef74599e80edc4ae3ea3fe06a9.setContent(html_75f5fb0a75ded5fbb626933e27053aaf);
+            
+        
+
+        circle_marker_3a076d01f9517668a3b3c384725e0fcb.bindPopup(popup_6cb9d6ef74599e80edc4ae3ea3fe06a9)
+        ;
+
+        
+    
+    
+            circle_marker_3a076d01f9517668a3b3c384725e0fcb.bindTooltip(
+                `<div>
+                     Irving city: 254,962 (Major City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_21c49cb17d6a88d27871d5806e8e4d21 = L.circleMarker(
+                [32.9343, -97.0781],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_71fced8863d3d6544062283c84989982 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2d3ca1f11dda2a79b5e139be0c2801bd = $(`<div id="html_2d3ca1f11dda2a79b5e139be0c2801bd" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Grapevine city</h4>                 <p><strong>Population:</strong> 50,763</p>                 <p><strong>Category:</strong> Medium City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_71fced8863d3d6544062283c84989982.setContent(html_2d3ca1f11dda2a79b5e139be0c2801bd);
+            
+        
+
+        circle_marker_21c49cb17d6a88d27871d5806e8e4d21.bindPopup(popup_71fced8863d3d6544062283c84989982)
+        ;
+
+        
+    
+    
+            circle_marker_21c49cb17d6a88d27871d5806e8e4d21.bindTooltip(
+                `<div>
+                     Grapevine city: 50,763 (Medium City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b5fea0b38a0ab65b96bb5daaefb17d8 = L.circleMarker(
+                [33.1972, -96.6153],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_dd041680869522b83a73ee0db4d34497 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_42799c71c0bfa207efc10d88480a019a = $(`<div id="html_42799c71c0bfa207efc10d88480a019a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>McKinney city</h4>                 <p><strong>Population:</strong> 196,160</p>                 <p><strong>Category:</strong> Large City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_dd041680869522b83a73ee0db4d34497.setContent(html_42799c71c0bfa207efc10d88480a019a);
+            
+        
+
+        circle_marker_9b5fea0b38a0ab65b96bb5daaefb17d8.bindPopup(popup_dd041680869522b83a73ee0db4d34497)
+        ;
+
+        
+    
+    
+            circle_marker_9b5fea0b38a0ab65b96bb5daaefb17d8.bindTooltip(
+                `<div>
+                     McKinney city: 196,160 (Large City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_42863cadda28f4dbce395244b8a7ce86 = L.circleMarker(
+                [32.7668, -96.5992],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_690db06b6899f9e8e0f5dd930ebc1443 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_579d4c7c0a1d25b68ade22c4ae747315 = $(`<div id="html_579d4c7c0a1d25b68ade22c4ae747315" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Mesquite city</h4>                 <p><strong>Population:</strong> 149,439</p>                 <p><strong>Category:</strong> Large City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_690db06b6899f9e8e0f5dd930ebc1443.setContent(html_579d4c7c0a1d25b68ade22c4ae747315);
+            
+        
+
+        circle_marker_42863cadda28f4dbce395244b8a7ce86.bindPopup(popup_690db06b6899f9e8e0f5dd930ebc1443)
+        ;
+
+        
+    
+    
+            circle_marker_42863cadda28f4dbce395244b8a7ce86.bindTooltip(
+                `<div>
+                     Mesquite city: 149,439 (Large City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_27713c4ae05241f65de7cdb300374732 = L.circleMarker(
+                [32.9537, -96.8903],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_dfd5247a54b3140fc1ef514b678e678d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4e884083625f382cd0713de23c8100ff = $(`<div id="html_4e884083625f382cd0713de23c8100ff" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Carrollton city</h4>                 <p><strong>Population:</strong> 132,284</p>                 <p><strong>Category:</strong> Large City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_dfd5247a54b3140fc1ef514b678e678d.setContent(html_4e884083625f382cd0713de23c8100ff);
+            
+        
+
+        circle_marker_27713c4ae05241f65de7cdb300374732.bindPopup(popup_dfd5247a54b3140fc1ef514b678e678d)
+        ;
+
+        
+    
+    
+            circle_marker_27713c4ae05241f65de7cdb300374732.bindTooltip(
+                `<div>
+                     Carrollton city: 132,284 (Large City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2ea1cc86a5db72b949513bb21d93b7e4 = L.circleMarker(
+                [33.1507, -96.8236],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_3e7fe898389cb6dc3a265f1ab4ecc471 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_758bb1cf4644510b5f000932a27644ae = $(`<div id="html_758bb1cf4644510b5f000932a27644ae" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Frisco city</h4>                 <p><strong>Population:</strong> 202,075</p>                 <p><strong>Category:</strong> Major City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_3e7fe898389cb6dc3a265f1ab4ecc471.setContent(html_758bb1cf4644510b5f000932a27644ae);
+            
+        
+
+        circle_marker_2ea1cc86a5db72b949513bb21d93b7e4.bindPopup(popup_3e7fe898389cb6dc3a265f1ab4ecc471)
+        ;
+
+        
+    
+    
+            circle_marker_2ea1cc86a5db72b949513bb21d93b7e4.bindTooltip(
+                `<div>
+                     Frisco city: 202,075 (Major City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e5d317b049c9e4b4c0c3f9702c53bf6 = L.circleMarker(
+                [33.2148, -97.1331],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_e01f914fd463c5f464ccb1e4ec9b5145 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e90ee564b12d4522d3f27202ac32ee6d = $(`<div id="html_e90ee564b12d4522d3f27202ac32ee6d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Denton city</h4>                 <p><strong>Population:</strong> 142,262</p>                 <p><strong>Category:</strong> Large City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_e01f914fd463c5f464ccb1e4ec9b5145.setContent(html_e90ee564b12d4522d3f27202ac32ee6d);
+            
+        
+
+        circle_marker_2e5d317b049c9e4b4c0c3f9702c53bf6.bindPopup(popup_e01f914fd463c5f464ccb1e4ec9b5145)
+        ;
+
+        
+    
+    
+            circle_marker_2e5d317b049c9e4b4c0c3f9702c53bf6.bindTooltip(
+                `<div>
+                     Denton city: 142,262 (Large City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6107b5aec5f21badf99cc180d21a8a28 = L.circleMarker(
+                [32.9483, -96.7299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_c6b21aa3677a654006ed87c378651927 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d6f24e762b88a1a42f432839873733f3 = $(`<div id="html_d6f24e762b88a1a42f432839873733f3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Richardson city</h4>                 <p><strong>Population:</strong> 118,063</p>                 <p><strong>Category:</strong> Large City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_c6b21aa3677a654006ed87c378651927.setContent(html_d6f24e762b88a1a42f432839873733f3);
+            
+        
+
+        circle_marker_6107b5aec5f21badf99cc180d21a8a28.bindPopup(popup_c6b21aa3677a654006ed87c378651927)
+        ;
+
+        
+    
+    
+            circle_marker_6107b5aec5f21badf99cc180d21a8a28.bindTooltip(
+                `<div>
+                     Richardson city: 118,063 (Large City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5c4695f37571add8a65e0b37b2f17745 = L.circleMarker(
+                [33.0462, -96.9942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_05ce82138cf6dcc0dc3ef5f8a5653f07 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2f15f8bc79ab36f7a93b3278499ed335 = $(`<div id="html_2f15f8bc79ab36f7a93b3278499ed335" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Lewisville city</h4>                 <p><strong>Population:</strong> 125,028</p>                 <p><strong>Category:</strong> Large City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_05ce82138cf6dcc0dc3ef5f8a5653f07.setContent(html_2f15f8bc79ab36f7a93b3278499ed335);
+            
+        
+
+        circle_marker_5c4695f37571add8a65e0b37b2f17745.bindPopup(popup_05ce82138cf6dcc0dc3ef5f8a5653f07)
+        ;
+
+        
+    
+    
+            circle_marker_5c4695f37571add8a65e0b37b2f17745.bindTooltip(
+                `<div>
+                     Lewisville city: 125,028 (Large City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c645c62f0fa49f6dcdfd11e9fc2f20c = L.circleMarker(
+                [33.1031, -96.6706],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_8afc2d1dad432c7670f96bf1cb4ae6aa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3febe1d451bb49012890d5f827d050fc = $(`<div id="html_3febe1d451bb49012890d5f827d050fc" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Allen city</h4>                 <p><strong>Population:</strong> 105,444</p>                 <p><strong>Category:</strong> Large City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_8afc2d1dad432c7670f96bf1cb4ae6aa.setContent(html_3febe1d451bb49012890d5f827d050fc);
+            
+        
+
+        circle_marker_4c645c62f0fa49f6dcdfd11e9fc2f20c.bindPopup(popup_8afc2d1dad432c7670f96bf1cb4ae6aa)
+        ;
+
+        
+    
+    
+            circle_marker_4c645c62f0fa49f6dcdfd11e9fc2f20c.bindTooltip(
+                `<div>
+                     Allen city: 105,444 (Large City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4809702a41b8e2b3b7cef124cfd43168 = L.circleMarker(
+                [33.0145, -97.0969],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_6346ffeb8bfe3002fcf063a600d87088 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3ee087ec7750eb540d6645de3f2cfc26 = $(`<div id="html_3ee087ec7750eb540d6645de3f2cfc26" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Flower Mound town</h4>                 <p><strong>Population:</strong> 76,630</p>                 <p><strong>Category:</strong> Medium City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_6346ffeb8bfe3002fcf063a600d87088.setContent(html_3ee087ec7750eb540d6645de3f2cfc26);
+            
+        
+
+        circle_marker_4809702a41b8e2b3b7cef124cfd43168.bindPopup(popup_6346ffeb8bfe3002fcf063a600d87088)
+        ;
+
+        
+    
+    
+            circle_marker_4809702a41b8e2b3b7cef124cfd43168.bindTooltip(
+                `<div>
+                     Flower Mound town: 76,630 (Medium City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f73b9841c5a63b195fbc94fbb60e27da = L.circleMarker(
+                [32.8371, -97.082],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_1281589107fd1b9677b81e835ff69f74 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1c57710530cd0629ac9ff868a9242d23 = $(`<div id="html_1c57710530cd0629ac9ff868a9242d23" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Euless city</h4>                 <p><strong>Population:</strong> 60,360</p>                 <p><strong>Category:</strong> Medium City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_1281589107fd1b9677b81e835ff69f74.setContent(html_1c57710530cd0629ac9ff868a9242d23);
+            
+        
+
+        circle_marker_f73b9841c5a63b195fbc94fbb60e27da.bindPopup(popup_1281589107fd1b9677b81e835ff69f74)
+        ;
+
+        
+    
+    
+            circle_marker_f73b9841c5a63b195fbc94fbb60e27da.bindTooltip(
+                `<div>
+                     Euless city: 60,360 (Medium City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_babfdc8f85661c2215cbac87db014b37 = L.circleMarker(
+                [32.844, -97.1431],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_1fa911c440b4261dbf6f3091ec79ba1c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_51db41eb7ce4ddbe2b4421c7c49f5a94 = $(`<div id="html_51db41eb7ce4ddbe2b4421c7c49f5a94" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Bedford city</h4>                 <p><strong>Population:</strong> 49,455</p>                 <p><strong>Category:</strong> Small City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_1fa911c440b4261dbf6f3091ec79ba1c.setContent(html_51db41eb7ce4ddbe2b4421c7c49f5a94);
+            
+        
+
+        circle_marker_babfdc8f85661c2215cbac87db014b37.bindPopup(popup_1fa911c440b4261dbf6f3091ec79ba1c)
+        ;
+
+        
+    
+    
+            circle_marker_babfdc8f85661c2215cbac87db014b37.bindTooltip(
+                `<div>
+                     Bedford city: 49,455 (Small City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c0a7e377fd6f974a7032c629c66319e0 = L.circleMarker(
+                [33.0151, -96.5389],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_cc5235704825dd9c0d0ba5b59211329d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a983db1422ddcf5e5409f714babb64b4 = $(`<div id="html_a983db1422ddcf5e5409f714babb64b4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Wylie city</h4>                 <p><strong>Population:</strong> 57,063</p>                 <p><strong>Category:</strong> Medium City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_cc5235704825dd9c0d0ba5b59211329d.setContent(html_a983db1422ddcf5e5409f714babb64b4);
+            
+        
+
+        circle_marker_c0a7e377fd6f974a7032c629c66319e0.bindPopup(popup_cc5235704825dd9c0d0ba5b59211329d)
+        ;
+
+        
+    
+    
+            circle_marker_c0a7e377fd6f974a7032c629c66319e0.bindTooltip(
+                `<div>
+                     Wylie city: 57,063 (Medium City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0b60d3a3800bf726c0a751914ee8e81e = L.circleMarker(
+                [33.089, -96.8928],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_e51f97952faedc3f892ceecd96892545 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7b41eff9223aaa8b915ddbac4deb1224 = $(`<div id="html_7b41eff9223aaa8b915ddbac4deb1224" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>The Colony city</h4>                 <p><strong>Population:</strong> 44,323</p>                 <p><strong>Category:</strong> Small City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_e51f97952faedc3f892ceecd96892545.setContent(html_7b41eff9223aaa8b915ddbac4deb1224);
+            
+        
+
+        circle_marker_0b60d3a3800bf726c0a751914ee8e81e.bindPopup(popup_e51f97952faedc3f892ceecd96892545)
+        ;
+
+        
+    
+    
+            circle_marker_0b60d3a3800bf726c0a751914ee8e81e.bindTooltip(
+                `<div>
+                     The Colony city: 44,323 (Small City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f692559680165e05f6aa768f78795485 = L.circleMarker(
+                [32.9412, -97.1342],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_852bfcdad829bd6ee759e6680da71551 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b1d77f188543c2a212ff9f1d7bdf424 = $(`<div id="html_4b1d77f188543c2a212ff9f1d7bdf424" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Southlake city</h4>                 <p><strong>Population:</strong> 30,779</p>                 <p><strong>Category:</strong> Small City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_852bfcdad829bd6ee759e6680da71551.setContent(html_4b1d77f188543c2a212ff9f1d7bdf424);
+            
+        
+
+        circle_marker_f692559680165e05f6aa768f78795485.bindPopup(popup_852bfcdad829bd6ee759e6680da71551)
+        ;
+
+        
+    
+    
+            circle_marker_f692559680165e05f6aa768f78795485.bindTooltip(
+                `<div>
+                     Southlake city: 30,779 (Small City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bb3a9abc880df90ce28a8462131de6a4 = L.circleMarker(
+                [32.5921, -96.7561],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_4297d95c2a46a185968b4bfab4eedb80 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7175ab2226b4310a53b4e64fa5b1d28a = $(`<div id="html_7175ab2226b4310a53b4e64fa5b1d28a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Lancaster city</h4>                 <p><strong>Population:</strong> 40,958</p>                 <p><strong>Category:</strong> Small City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_4297d95c2a46a185968b4bfab4eedb80.setContent(html_7175ab2226b4310a53b4e64fa5b1d28a);
+            
+        
+
+        circle_marker_bb3a9abc880df90ce28a8462131de6a4.bindPopup(popup_4297d95c2a46a185968b4bfab4eedb80)
+        ;
+
+        
+    
+    
+            circle_marker_bb3a9abc880df90ce28a8462131de6a4.bindTooltip(
+                `<div>
+                     Lancaster city: 40,958 (Small City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2f6e9903a82cf77c3c7075e07f05f079 = L.circleMarker(
+                [32.5632, -97.1417],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_ac5136495ead96ec37ae7d207aea63ca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_226224c3d419d6b0e1a1b71bc062591b = $(`<div id="html_226224c3d419d6b0e1a1b71bc062591b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Mansfield city</h4>                 <p><strong>Population:</strong> 73,680</p>                 <p><strong>Category:</strong> Medium City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_ac5136495ead96ec37ae7d207aea63ca.setContent(html_226224c3d419d6b0e1a1b71bc062591b);
+            
+        
+
+        circle_marker_2f6e9903a82cf77c3c7075e07f05f079.bindPopup(popup_ac5136495ead96ec37ae7d207aea63ca)
+        ;
+
+        
+    
+    
+            circle_marker_2f6e9903a82cf77c3c7075e07f05f079.bindTooltip(
+                `<div>
+                     Mansfield city: 73,680 (Medium City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ff7788b4df3164daf1c8ceeda65f9686 = L.circleMarker(
+                [32.9029, -96.5639],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_1f7a312fd99f1fa21da66717ed3c0812 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9c0983b850d12f94ec2a6f37cd2deb36 = $(`<div id="html_9c0983b850d12f94ec2a6f37cd2deb36" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Rowlett city</h4>                 <p><strong>Population:</strong> 63,291</p>                 <p><strong>Category:</strong> Medium City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_1f7a312fd99f1fa21da66717ed3c0812.setContent(html_9c0983b850d12f94ec2a6f37cd2deb36);
+            
+        
+
+        circle_marker_ff7788b4df3164daf1c8ceeda65f9686.bindPopup(popup_1f7a312fd99f1fa21da66717ed3c0812)
+        ;
+
+        
+    
+    
+            circle_marker_ff7788b4df3164daf1c8ceeda65f9686.bindTooltip(
+                `<div>
+                     Rowlett city: 63,291 (Medium City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dc6d365f341319cf90f799576457bd46 = L.circleMarker(
+                [32.9312, -96.4597],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(map_926812ea97ba894bcb5bfe7ddaee9a3c);
+        
+    
+        var popup_881bb819ad860158517ebf9915addec7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_28a0add00cfb8fb09fca10f492e588ff = $(`<div id="html_28a0add00cfb8fb09fca10f492e588ff" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial;">                 <h4>Rockwall city</h4>                 <p><strong>Population:</strong> 47,859</p>                 <p><strong>Category:</strong> Small City</p>                 <p><strong>Distance from Dallas:</strong> 0.0 miles</p>             </div>             </div>`)[0];
+                popup_881bb819ad860158517ebf9915addec7.setContent(html_28a0add00cfb8fb09fca10f492e588ff);
+            
+        
+
+        circle_marker_dc6d365f341319cf90f799576457bd46.bindPopup(popup_881bb819ad860158517ebf9915addec7)
+        ;
+
+        
+    
+    
+            circle_marker_dc6d365f341319cf90f799576457bd46.bindTooltip(
+                `<div>
+                     Rockwall city: 47,859 (Small City)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>North Texas Demographic Evolution - Expanded Analysis</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            background: rgba(255,255,255,0.95);
+            color: #2c3e50;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .map-container {
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>North Texas Demographic Evolution</h1>
+        <p>Comprehensive Analysis of the Dallas-Denison Region (2009-2022)</p>
+    </div>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">32</div>
+            <div class="stat-label">Cities Analyzed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">19.8%</div>
+            <div class="stat-label">Regional Growth</div>
+        </div>
+    </div>
+    
+    <div class="map-container">
+        <h2>🗺️ Interactive Regional Map</h2>
+        <iframe src="north_texas_expanded_map.html"></iframe>
+    </div>
+    
+    <div class="map-container">
+        <h2>🏙️ Regional City Overview</h2>
+        <iframe src="north_texas_regional_overview.html"></iframe>
+    </div>
+</body>
+</html>

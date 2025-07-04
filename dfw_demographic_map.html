@@ -1,0 +1,3522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ea05f43b1a6d8f87109c31501e898bd6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <h2 style="position: fixed; 
+               top: 10px; left: 50px; width: 400px; height: 60px; 
+               background-color: white; border: 2px solid grey; z-index:9999; 
+               font-size: 20px; padding: 10px; font-family: Arial;">
+    DFW Demographic Evolution (2009-2022)
+    </h2>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; left: 50px; width: 200px; height: 140px; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:14px; padding: 10px; font-family: Arial;">
+    <h4 style="margin-top: 0;">Population Growth Legend</h4>
+    <div><span style="color: #d73027;">●</span> 50%+ (Very High)</div>
+    <div><span style="color: #fc8d59;">●</span> 25-50% (High)</div>
+    <div><span style="color: #fee08b;">●</span> 10-25% (Moderate)</div>
+    <div><span style="color: #e0f3f8;">●</span> 0-10% (Low)</div>
+    <div><span style="color: #4575b4;">●</span> Decline</div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_ea05f43b1a6d8f87109c31501e898bd6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ea05f43b1a6d8f87109c31501e898bd6 = L.map(
+                "map_ea05f43b1a6d8f87109c31501e898bd6",
+                {
+                    center: [32.8, -97.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_189a89ad8d836363f1ecf028cdd5823d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_189a89ad8d836363f1ecf028cdd5823d.addTo(map_ea05f43b1a6d8f87109c31501e898bd6);
+        
+    
+            var feature_group_e69f90788ad2cb9c58bfe21134325ee2 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_b4aa54d5b931aa1cfb2412698a536fbb = L.marker(
+                [32.7767, -96.797],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_ac8401551913161927b714dba8b103a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ccb665eb0780a7d0c33b47948302276 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bd2859f8974c7911756a39c05ab37283 = $(`<div id="html_bd2859f8974c7911756a39c05ab37283" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Dallas city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 1,269,204</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 56.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 23.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 2.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 42.3%</span>             </div>             </div></div></div>`)[0];
+                popup_5ccb665eb0780a7d0c33b47948302276.setContent(html_bd2859f8974c7911756a39c05ab37283);
+            
+        
+
+        marker_b4aa54d5b931aa1cfb2412698a536fbb.bindPopup(popup_5ccb665eb0780a7d0c33b47948302276)
+        ;
+
+        
+    
+    
+            marker_b4aa54d5b931aa1cfb2412698a536fbb.bindTooltip(
+                `<div>
+                     Dallas city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b4aa54d5b931aa1cfb2412698a536fbb.setIcon(icon_ac8401551913161927b714dba8b103a2);
+            
+    
+            var marker_82c6815e7cbb46517ead850ef429073c = L.marker(
+                [32.7555, -97.3308],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_13e4ee4ead5d42b2ea3c60b388e1a2a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03475990bb129c2fe7ad84d029bc0348 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_aa951b5c26f05f273baca048a9931d66 = $(`<div id="html_aa951b5c26f05f273baca048a9931d66" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Fort Worth city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 679,077</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 63.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 18.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 33.1%</span>             </div>             </div></div></div>`)[0];
+                popup_03475990bb129c2fe7ad84d029bc0348.setContent(html_aa951b5c26f05f273baca048a9931d66);
+            
+        
+
+        marker_82c6815e7cbb46517ead850ef429073c.bindPopup(popup_03475990bb129c2fe7ad84d029bc0348)
+        ;
+
+        
+    
+    
+            marker_82c6815e7cbb46517ead850ef429073c.bindTooltip(
+                `<div>
+                     Fort Worth city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_82c6815e7cbb46517ead850ef429073c.setIcon(icon_13e4ee4ead5d42b2ea3c60b388e1a2a1);
+            
+    
+            var marker_6dd39de67ffde4f696d870b78a8620ec = L.marker(
+                [32.7357, -97.1081],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_8315b8b965afee743a29b273f96107a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1fa4a6eceecf82fdb38fc0224a613e56 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c6a235d9203a1d9d4d0954264d0627a6 = $(`<div id="html_c6a235d9203a1d9d4d0954264d0627a6" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Arlington city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 370,217</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 62.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 17.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 6.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 25.9%</span>             </div>             </div></div></div>`)[0];
+                popup_1fa4a6eceecf82fdb38fc0224a613e56.setContent(html_c6a235d9203a1d9d4d0954264d0627a6);
+            
+        
+
+        marker_6dd39de67ffde4f696d870b78a8620ec.bindPopup(popup_1fa4a6eceecf82fdb38fc0224a613e56)
+        ;
+
+        
+    
+    
+            marker_6dd39de67ffde4f696d870b78a8620ec.bindTooltip(
+                `<div>
+                     Arlington city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6dd39de67ffde4f696d870b78a8620ec.setIcon(icon_8315b8b965afee743a29b273f96107a4);
+            
+    
+            var marker_aefec2184f3675db61cbf9e39bc10cdc = L.marker(
+                [33.0198, -96.6989],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_c47c603cd5100c7e23f69d4d1918632b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0e980d597b561669e0e230b191bbab30 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dd603e6150fa1865a6b8f1e779bdf659 = $(`<div id="html_dd603e6150fa1865a6b8f1e779bdf659" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Plano city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 261,902</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 74.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 6.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 14.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 13.9%</span>             </div>             </div></div></div>`)[0];
+                popup_0e980d597b561669e0e230b191bbab30.setContent(html_dd603e6150fa1865a6b8f1e779bdf659);
+            
+        
+
+        marker_aefec2184f3675db61cbf9e39bc10cdc.bindPopup(popup_0e980d597b561669e0e230b191bbab30)
+        ;
+
+        
+    
+    
+            marker_aefec2184f3675db61cbf9e39bc10cdc.bindTooltip(
+                `<div>
+                     Plano city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aefec2184f3675db61cbf9e39bc10cdc.setIcon(icon_c47c603cd5100c7e23f69d4d1918632b);
+            
+    
+            var marker_fbe9847b4fc82c8bcbf906ab10eb70e5 = L.marker(
+                [32.814, -96.9489],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_4635827e87c2ea8b14c6bb8b1c42b171 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c91d663f8571da685ba9c497a6fb8afd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_872124283e2ca7d2f9ff9a131736f53f = $(`<div id="html_872124283e2ca7d2f9ff9a131736f53f" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Irving city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 197,830</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 63.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 10.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 11.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 40.5%</span>             </div>             </div></div></div>`)[0];
+                popup_c91d663f8571da685ba9c497a6fb8afd.setContent(html_872124283e2ca7d2f9ff9a131736f53f);
+            
+        
+
+        marker_fbe9847b4fc82c8bcbf906ab10eb70e5.bindPopup(popup_c91d663f8571da685ba9c497a6fb8afd)
+        ;
+
+        
+    
+    
+            marker_fbe9847b4fc82c8bcbf906ab10eb70e5.bindTooltip(
+                `<div>
+                     Irving city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fbe9847b4fc82c8bcbf906ab10eb70e5.setIcon(icon_4635827e87c2ea8b14c6bb8b1c42b171);
+            
+    
+            var marker_c10217c55ec34fe1812dc7babd77d62a = L.marker(
+                [32.9126, -96.6389],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_8d9bd009e8cfb390306e29f23398a8cc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ee7a22a16ea374825c43d259d8ebbfd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_512028844896bab05cef36f9c90850b0 = $(`<div id="html_512028844896bab05cef36f9c90850b0" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Garland city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 217,317</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 51.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 13.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 9.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 37.1%</span>             </div>             </div></div></div>`)[0];
+                popup_3ee7a22a16ea374825c43d259d8ebbfd.setContent(html_512028844896bab05cef36f9c90850b0);
+            
+        
+
+        marker_c10217c55ec34fe1812dc7babd77d62a.bindPopup(popup_3ee7a22a16ea374825c43d259d8ebbfd)
+        ;
+
+        
+    
+    
+            marker_c10217c55ec34fe1812dc7babd77d62a.bindTooltip(
+                `<div>
+                     Garland city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c10217c55ec34fe1812dc7babd77d62a.setIcon(icon_8d9bd009e8cfb390306e29f23398a8cc);
+            
+    
+            var marker_2bd00af2cee702d9b201daecd1f8bd28 = L.marker(
+                [33.1972, -96.6153],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_4e26113fa1c04afef817ba4e76e15483 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_377f6aec772af06dace9311e4a0691af = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_637716353ab28f37c576a540c3c2d3ec = $(`<div id="html_637716353ab28f37c576a540c3c2d3ec" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">McKinney city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 113,606</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 80.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 10.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 17.7%</span>             </div>             </div></div></div>`)[0];
+                popup_377f6aec772af06dace9311e4a0691af.setContent(html_637716353ab28f37c576a540c3c2d3ec);
+            
+        
+
+        marker_2bd00af2cee702d9b201daecd1f8bd28.bindPopup(popup_377f6aec772af06dace9311e4a0691af)
+        ;
+
+        
+    
+    
+            marker_2bd00af2cee702d9b201daecd1f8bd28.bindTooltip(
+                `<div>
+                     McKinney city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2bd00af2cee702d9b201daecd1f8bd28.setIcon(icon_4e26113fa1c04afef817ba4e76e15483);
+            
+    
+            var marker_c888dd320619d788fcb8745caeb25366 = L.marker(
+                [32.7668, -96.5992],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_3e0422355c902932bf92b507d5dedf90 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5d9c0a79e9d4d9dd73fad2025244974e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ae96f07cafeb8680f07972c1e1a8a5e0 = $(`<div id="html_ae96f07cafeb8680f07972c1e1a8a5e0" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Mesquite city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 130,751</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 69.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 17.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 27.8%</span>             </div>             </div></div></div>`)[0];
+                popup_5d9c0a79e9d4d9dd73fad2025244974e.setContent(html_ae96f07cafeb8680f07972c1e1a8a5e0);
+            
+        
+
+        marker_c888dd320619d788fcb8745caeb25366.bindPopup(popup_5d9c0a79e9d4d9dd73fad2025244974e)
+        ;
+
+        
+    
+    
+            marker_c888dd320619d788fcb8745caeb25366.bindTooltip(
+                `<div>
+                     Mesquite city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c888dd320619d788fcb8745caeb25366.setIcon(icon_3e0422355c902932bf92b507d5dedf90);
+            
+    
+            var marker_4863a52bdb86ed298b44ae4b169975d0 = L.marker(
+                [32.9537, -96.8903],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_9e61bec8d1a38c921cbc3c9acf2e3dce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f91368004c0e7d983fbea69f68af0006 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_38b1c148964c779ca6b5e262aba6f004 = $(`<div id="html_38b1c148964c779ca6b5e262aba6f004" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Carrollton city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 123,620</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 73.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 7.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 12.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 28.1%</span>             </div>             </div></div></div>`)[0];
+                popup_f91368004c0e7d983fbea69f68af0006.setContent(html_38b1c148964c779ca6b5e262aba6f004);
+            
+        
+
+        marker_4863a52bdb86ed298b44ae4b169975d0.bindPopup(popup_f91368004c0e7d983fbea69f68af0006)
+        ;
+
+        
+    
+    
+            marker_4863a52bdb86ed298b44ae4b169975d0.bindTooltip(
+                `<div>
+                     Carrollton city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4863a52bdb86ed298b44ae4b169975d0.setIcon(icon_9e61bec8d1a38c921cbc3c9acf2e3dce);
+            
+    
+            var marker_6bab7d3a1768958915e1e32315b08081 = L.marker(
+                [33.1507, -96.8236],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_421065bd981ee76a3c265db9504d659c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_64c30e7b8633c5d61cbd73d3613518fd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_af5ed0d5c12dafd7b9d3ada61ba6686a = $(`<div id="html_af5ed0d5c12dafd7b9d3ada61ba6686a" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Frisco city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 87,712</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 81.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 6.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 7.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 13.3%</span>             </div>             </div></div></div>`)[0];
+                popup_64c30e7b8633c5d61cbd73d3613518fd.setContent(html_af5ed0d5c12dafd7b9d3ada61ba6686a);
+            
+        
+
+        marker_6bab7d3a1768958915e1e32315b08081.bindPopup(popup_64c30e7b8633c5d61cbd73d3613518fd)
+        ;
+
+        
+    
+    
+            marker_6bab7d3a1768958915e1e32315b08081.bindTooltip(
+                `<div>
+                     Frisco city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6bab7d3a1768958915e1e32315b08081.setIcon(icon_421065bd981ee76a3c265db9504d659c);
+            
+    
+            var marker_05546efda9d7b9fd6edaa62bc7d07a52 = L.marker(
+                [33.2148, -97.1331],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_9c3d28e2446f4c57fc5204716c0e043a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_773d67d58fdba09ee39093b158acc30b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e4a6001acc26f44e0ea8829b210a477 = $(`<div id="html_7e4a6001acc26f44e0ea8829b210a477" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Denton city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 114,933</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 76.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 10.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 19.3%</span>             </div>             </div></div></div>`)[0];
+                popup_773d67d58fdba09ee39093b158acc30b.setContent(html_7e4a6001acc26f44e0ea8829b210a477);
+            
+        
+
+        marker_05546efda9d7b9fd6edaa62bc7d07a52.bindPopup(popup_773d67d58fdba09ee39093b158acc30b)
+        ;
+
+        
+    
+    
+            marker_05546efda9d7b9fd6edaa62bc7d07a52.bindTooltip(
+                `<div>
+                     Denton city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_05546efda9d7b9fd6edaa62bc7d07a52.setIcon(icon_9c3d28e2446f4c57fc5204716c0e043a);
+            
+    
+            var marker_b2df3ff83c092096e1e59ef8f0a68b21 = L.marker(
+                [32.9483, -96.7299],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_8a3f44295fcfb38baf21dfe0b4eb59e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_31cc1aa768ada797f980b22244a02114 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_99945d0c1b778b93db0a8c2b5b7ec1a7 = $(`<div id="html_99945d0c1b778b93db0a8c2b5b7ec1a7" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Richardson city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 100,045</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 74.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 6.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 13.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 16.8%</span>             </div>             </div></div></div>`)[0];
+                popup_31cc1aa768ada797f980b22244a02114.setContent(html_99945d0c1b778b93db0a8c2b5b7ec1a7);
+            
+        
+
+        marker_b2df3ff83c092096e1e59ef8f0a68b21.bindPopup(popup_31cc1aa768ada797f980b22244a02114)
+        ;
+
+        
+    
+    
+            marker_b2df3ff83c092096e1e59ef8f0a68b21.bindTooltip(
+                `<div>
+                     Richardson city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b2df3ff83c092096e1e59ef8f0a68b21.setIcon(icon_8a3f44295fcfb38baf21dfe0b4eb59e7);
+            
+    
+            var marker_a684e7d3f7661bc75303da88e6337c5b = L.marker(
+                [33.0462, -96.9942],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_eccc24a35b84a0787f08b568e406f0f3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd65dd6da05849491878bbda02fe4e09 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4e669cf8bec77ad5d0756e8b61eed51f = $(`<div id="html_4e669cf8bec77ad5d0756e8b61eed51f" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Lewisville city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 98,519</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 71.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 9.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 6.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 25.4%</span>             </div>             </div></div></div>`)[0];
+                popup_bd65dd6da05849491878bbda02fe4e09.setContent(html_4e669cf8bec77ad5d0756e8b61eed51f);
+            
+        
+
+        marker_a684e7d3f7661bc75303da88e6337c5b.bindPopup(popup_bd65dd6da05849491878bbda02fe4e09)
+        ;
+
+        
+    
+    
+            marker_a684e7d3f7661bc75303da88e6337c5b.bindTooltip(
+                `<div>
+                     Lewisville city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a684e7d3f7661bc75303da88e6337c5b.setIcon(icon_eccc24a35b84a0787f08b568e406f0f3);
+            
+    
+            var marker_3d10f6465aaca88e2cb1fe1cfee99f95 = L.marker(
+                [33.1031, -96.6706],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_ea788133a2d8bd30a79d0e589f4e4da9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_93a0bce106faa47de719cbe25d8ad0b1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_aad404689e4f44712e1ccbc3f2768a33 = $(`<div id="html_aad404689e4f44712e1ccbc3f2768a33" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Allen city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 77,072</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 75.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 8.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 10.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 10.6%</span>             </div>             </div></div></div>`)[0];
+                popup_93a0bce106faa47de719cbe25d8ad0b1.setContent(html_aad404689e4f44712e1ccbc3f2768a33);
+            
+        
+
+        marker_3d10f6465aaca88e2cb1fe1cfee99f95.bindPopup(popup_93a0bce106faa47de719cbe25d8ad0b1)
+        ;
+
+        
+    
+    
+            marker_3d10f6465aaca88e2cb1fe1cfee99f95.bindTooltip(
+                `<div>
+                     Allen city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d10f6465aaca88e2cb1fe1cfee99f95.setIcon(icon_ea788133a2d8bd30a79d0e589f4e4da9);
+            
+    
+            var marker_72006a47e478dc93cfb971582881e1b0 = L.marker(
+                [33.0145, -97.0969],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_707befb17b9d408f50a805f72720ace5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1b4bd2464b17cd2b4ff3b14a4143602d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1b121a0cb48681f270bd4d6138ac55da = $(`<div id="html_1b121a0cb48681f270bd4d6138ac55da" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Flower Mound town (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 67,678</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 87.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 3.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 5.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 7.4%</span>             </div>             </div></div></div>`)[0];
+                popup_1b4bd2464b17cd2b4ff3b14a4143602d.setContent(html_1b121a0cb48681f270bd4d6138ac55da);
+            
+        
+
+        marker_72006a47e478dc93cfb971582881e1b0.bindPopup(popup_1b4bd2464b17cd2b4ff3b14a4143602d)
+        ;
+
+        
+    
+    
+            marker_72006a47e478dc93cfb971582881e1b0.bindTooltip(
+                `<div>
+                     Flower Mound town - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_72006a47e478dc93cfb971582881e1b0.setIcon(icon_707befb17b9d408f50a805f72720ace5);
+            
+    
+            var marker_46e8320ccadf213896330ece9758d35e = L.marker(
+                [32.8371, -97.082],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_12d95aa8002a436d16b45142544a17cf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c53ef8cf800a31fb458a20b8cad2e5e3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b82f7d909c1da75d9086bc5459924651 = $(`<div id="html_b82f7d909c1da75d9086bc5459924651" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Euless city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 52,134</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 64.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 11.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 7.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 18.2%</span>             </div>             </div></div></div>`)[0];
+                popup_c53ef8cf800a31fb458a20b8cad2e5e3.setContent(html_b82f7d909c1da75d9086bc5459924651);
+            
+        
+
+        marker_46e8320ccadf213896330ece9758d35e.bindPopup(popup_c53ef8cf800a31fb458a20b8cad2e5e3)
+        ;
+
+        
+    
+    
+            marker_46e8320ccadf213896330ece9758d35e.bindTooltip(
+                `<div>
+                     Euless city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_46e8320ccadf213896330ece9758d35e.setIcon(icon_12d95aa8002a436d16b45142544a17cf);
+            
+    
+            var marker_6a5c9ab50e2d575624826ba28fee8859 = L.marker(
+                [32.844, -97.1431],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_b4e51ced1d6fef2643731f81311cb133 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c93439dda290ca5ed1d632c0a4cb6574 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b65092e5f439c864de0d4cf5f844dff1 = $(`<div id="html_b65092e5f439c864de0d4cf5f844dff1" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Bedford city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 48,899</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 80.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 7.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 5.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 11.0%</span>             </div>             </div></div></div>`)[0];
+                popup_c93439dda290ca5ed1d632c0a4cb6574.setContent(html_b65092e5f439c864de0d4cf5f844dff1);
+            
+        
+
+        marker_6a5c9ab50e2d575624826ba28fee8859.bindPopup(popup_c93439dda290ca5ed1d632c0a4cb6574)
+        ;
+
+        
+    
+    
+            marker_6a5c9ab50e2d575624826ba28fee8859.bindTooltip(
+                `<div>
+                     Bedford city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6a5c9ab50e2d575624826ba28fee8859.setIcon(icon_b4e51ced1d6fef2643731f81311cb133);
+            
+    
+            var marker_19f7f0e23c0a0a9b25a2d7ba0eafa49e = L.marker(
+                [33.0151, -96.5389],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_96f4641df6d8055c73b3828a550bb7d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_16374399fa14e91d470035df0be4dac6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4ec0a1b21ae0bb502d6f5bf33d1c5fab = $(`<div id="html_4ec0a1b21ae0bb502d6f5bf33d1c5fab" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Wylie city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 34,146</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 77.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 9.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 5.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 16.0%</span>             </div>             </div></div></div>`)[0];
+                popup_16374399fa14e91d470035df0be4dac6.setContent(html_4ec0a1b21ae0bb502d6f5bf33d1c5fab);
+            
+        
+
+        marker_19f7f0e23c0a0a9b25a2d7ba0eafa49e.bindPopup(popup_16374399fa14e91d470035df0be4dac6)
+        ;
+
+        
+    
+    
+            marker_19f7f0e23c0a0a9b25a2d7ba0eafa49e.bindTooltip(
+                `<div>
+                     Wylie city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_19f7f0e23c0a0a9b25a2d7ba0eafa49e.setIcon(icon_96f4641df6d8055c73b3828a550bb7d8);
+            
+    
+            var marker_33788432969bb9701168d485a0b8a400 = L.marker(
+                [33.089, -96.8928],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_f30a5ca478ba92ab70e2aa763c4d2cf2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4285a0c37eaed5da88b7b0f209033129 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e58f476e5840fe118dea6789766bce38 = $(`<div id="html_e58f476e5840fe118dea6789766bce38" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">The Colony city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 41,392</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 79.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 7.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 5.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 17.1%</span>             </div>             </div></div></div>`)[0];
+                popup_4285a0c37eaed5da88b7b0f209033129.setContent(html_e58f476e5840fe118dea6789766bce38);
+            
+        
+
+        marker_33788432969bb9701168d485a0b8a400.bindPopup(popup_4285a0c37eaed5da88b7b0f209033129)
+        ;
+
+        
+    
+    
+            marker_33788432969bb9701168d485a0b8a400.bindTooltip(
+                `<div>
+                     The Colony city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33788432969bb9701168d485a0b8a400.setIcon(icon_f30a5ca478ba92ab70e2aa763c4d2cf2);
+            
+    
+            var marker_912535352fb295715535f57856dcacd9 = L.marker(
+                [32.9412, -97.1342],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_1498b5dbce2ed3c34d7aaba66f59b43a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ed5899ab8bd3429a415a54f1084edc7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_326d2ab14b273ef5edc5df7d4d40f4ef = $(`<div id="html_326d2ab14b273ef5edc5df7d4d40f4ef" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Southlake city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 26,054</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 92.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 1.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 4.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 3.6%</span>             </div>             </div></div></div>`)[0];
+                popup_3ed5899ab8bd3429a415a54f1084edc7.setContent(html_326d2ab14b273ef5edc5df7d4d40f4ef);
+            
+        
+
+        marker_912535352fb295715535f57856dcacd9.bindPopup(popup_3ed5899ab8bd3429a415a54f1084edc7)
+        ;
+
+        
+    
+    
+            marker_912535352fb295715535f57856dcacd9.bindTooltip(
+                `<div>
+                     Southlake city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_912535352fb295715535f57856dcacd9.setIcon(icon_1498b5dbce2ed3c34d7aaba66f59b43a);
+            
+    
+            var marker_23fe11073fa5c645fc0c7add306415fc = L.marker(
+                [32.8501, -96.8003],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_77b872b84cb268877089e3e250e411de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67f73eb5337cc50354e3051c8680e3c0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_51cd2ef94a42cb0c08d2663f620f278e = $(`<div id="html_51cd2ef94a42cb0c08d2663f620f278e" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">University Park city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 24,352</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 93.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 1.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 3.8%</span>             </div>             </div></div></div>`)[0];
+                popup_67f73eb5337cc50354e3051c8680e3c0.setContent(html_51cd2ef94a42cb0c08d2663f620f278e);
+            
+        
+
+        marker_23fe11073fa5c645fc0c7add306415fc.bindPopup(popup_67f73eb5337cc50354e3051c8680e3c0)
+        ;
+
+        
+    
+    
+            marker_23fe11073fa5c645fc0c7add306415fc.bindTooltip(
+                `<div>
+                     University Park city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_23fe11073fa5c645fc0c7add306415fc.setIcon(icon_77b872b84cb268877089e3e250e411de);
+            
+    
+            var marker_a1ca4e1734d35bc95603e49c93678eb7 = L.marker(
+                [32.9265, -96.8961],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_c58755d2a84d97c057239e743eff5fbc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_188d68e0f37a03935fc0c595d6d91846 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0f7e5e089db39f1b6c9bfdc5a416a0cb = $(`<div id="html_0f7e5e089db39f1b6c9bfdc5a416a0cb" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Farmers Branch city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 26,379</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 82.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 3.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 45.8%</span>             </div>             </div></div></div>`)[0];
+                popup_188d68e0f37a03935fc0c595d6d91846.setContent(html_0f7e5e089db39f1b6c9bfdc5a416a0cb);
+            
+        
+
+        marker_a1ca4e1734d35bc95603e49c93678eb7.bindPopup(popup_188d68e0f37a03935fc0c595d6d91846)
+        ;
+
+        
+    
+    
+            marker_a1ca4e1734d35bc95603e49c93678eb7.bindTooltip(
+                `<div>
+                     Farmers Branch city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a1ca4e1734d35bc95603e49c93678eb7.setIcon(icon_c58755d2a84d97c057239e743eff5fbc);
+            
+    
+            var marker_0e67107b6207261d3e7c2e5d5ddd5ed4 = L.marker(
+                [32.5921, -96.7561],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_7d9447bbb60669e067465e23ec08b5e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d8b916dc1fb70fcb1c9573458adc5e21 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e2f23bc878011c2101d43f932d622f2d = $(`<div id="html_e2f23bc878011c2101d43f932d622f2d" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Lancaster city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 34,313</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 25.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 66.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 0.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 16.2%</span>             </div>             </div></div></div>`)[0];
+                popup_d8b916dc1fb70fcb1c9573458adc5e21.setContent(html_e2f23bc878011c2101d43f932d622f2d);
+            
+        
+
+        marker_0e67107b6207261d3e7c2e5d5ddd5ed4.bindPopup(popup_d8b916dc1fb70fcb1c9573458adc5e21)
+        ;
+
+        
+    
+    
+            marker_0e67107b6207261d3e7c2e5d5ddd5ed4.bindTooltip(
+                `<div>
+                     Lancaster city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0e67107b6207261d3e7c2e5d5ddd5ed4.setIcon(icon_7d9447bbb60669e067465e23ec08b5e2);
+            
+    
+            var marker_5c5b98e9cccba6d25f7f8285010f7cd5 = L.marker(
+                [32.5632, -97.1417],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_601b57abfce63c9f56189df4a904ca42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_198d438f9bd9e1d8a41d7dd5d5d3b3ba = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b26f2c582e8124486d9d9cb214eff92e = $(`<div id="html_b26f2c582e8124486d9d9cb214eff92e" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Mansfield city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 42,958</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 76.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 11.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 16.4%</span>             </div>             </div></div></div>`)[0];
+                popup_198d438f9bd9e1d8a41d7dd5d5d3b3ba.setContent(html_b26f2c582e8124486d9d9cb214eff92e);
+            
+        
+
+        marker_5c5b98e9cccba6d25f7f8285010f7cd5.bindPopup(popup_198d438f9bd9e1d8a41d7dd5d5d3b3ba)
+        ;
+
+        
+    
+    
+            marker_5c5b98e9cccba6d25f7f8285010f7cd5.bindTooltip(
+                `<div>
+                     Mansfield city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c5b98e9cccba6d25f7f8285010f7cd5.setIcon(icon_601b57abfce63c9f56189df4a904ca42);
+            
+    
+            var marker_02ace7cd0399b77160ccbfd3e95ae6a2 = L.marker(
+                [32.9029, -96.5639],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_bb9178bbbe54ffb422fda2f7da72fca8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ba2e4316e7b58b54e9e99261fbde4a6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c3c1b56266005dae45f55985d1c60ba6 = $(`<div id="html_c3c1b56266005dae45f55985d1c60ba6" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Rowlett city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 54,899</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 76.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 12.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 4.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 14.2%</span>             </div>             </div></div></div>`)[0];
+                popup_9ba2e4316e7b58b54e9e99261fbde4a6.setContent(html_c3c1b56266005dae45f55985d1c60ba6);
+            
+        
+
+        marker_02ace7cd0399b77160ccbfd3e95ae6a2.bindPopup(popup_9ba2e4316e7b58b54e9e99261fbde4a6)
+        ;
+
+        
+    
+    
+            marker_02ace7cd0399b77160ccbfd3e95ae6a2.bindTooltip(
+                `<div>
+                     Rowlett city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02ace7cd0399b77160ccbfd3e95ae6a2.setIcon(icon_bb9178bbbe54ffb422fda2f7da72fca8);
+            
+    
+            var marker_142be07741d1c70e70295f07f20b0311 = L.marker(
+                [32.9312, -96.4597],
+                {
+}
+            ).addTo(feature_group_e69f90788ad2cb9c58bfe21134325ee2);
+        
+    
+            var icon_2a6fbf23fbb8586c9b2413a9bc68a8de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_409b0c0045a8a46b7bd33fd6ba3cb9f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8387cae3781f7eda2dcc43c1c0737911 = $(`<div id="html_8387cae3781f7eda2dcc43c1c0737911" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Rockwall city (2009)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 33,548</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 86.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 5.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 2.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 10.9%</span>             </div>             </div></div></div>`)[0];
+                popup_409b0c0045a8a46b7bd33fd6ba3cb9f1.setContent(html_8387cae3781f7eda2dcc43c1c0737911);
+            
+        
+
+        marker_142be07741d1c70e70295f07f20b0311.bindPopup(popup_409b0c0045a8a46b7bd33fd6ba3cb9f1)
+        ;
+
+        
+    
+    
+            marker_142be07741d1c70e70295f07f20b0311.bindTooltip(
+                `<div>
+                     Rockwall city - 2009
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_142be07741d1c70e70295f07f20b0311.setIcon(icon_2a6fbf23fbb8586c9b2413a9bc68a8de);
+            
+    
+            feature_group_e69f90788ad2cb9c58bfe21134325ee2.addTo(map_ea05f43b1a6d8f87109c31501e898bd6);
+        
+    
+            var feature_group_6e98787468888d157bbb6d6245be714b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_892eb998439ecb1f41a1776eee5e249c = L.marker(
+                [32.7767, -96.797],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_837a0b64bbc5e19b950dd6be74c81f69 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_00e48851a4f30b5d409c021a0d67301b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_75e5d708466d0c822a2c2c665919d92e = $(`<div id="html_75e5d708466d0c822a2c2c665919d92e" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Dallas city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 1,300,642</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 48.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 23.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 42.4%</span>             </div>             </div></div></div>`)[0];
+                popup_00e48851a4f30b5d409c021a0d67301b.setContent(html_75e5d708466d0c822a2c2c665919d92e);
+            
+        
+
+        marker_892eb998439ecb1f41a1776eee5e249c.bindPopup(popup_00e48851a4f30b5d409c021a0d67301b)
+        ;
+
+        
+    
+    
+            marker_892eb998439ecb1f41a1776eee5e249c.bindTooltip(
+                `<div>
+                     Dallas city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_892eb998439ecb1f41a1776eee5e249c.setIcon(icon_837a0b64bbc5e19b950dd6be74c81f69);
+            
+    
+            var marker_018edcefa452461218f50b506fb696df = L.marker(
+                [32.7555, -97.3308],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_c47e8514e91b28ad2c482eae3ddec7b4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6664bfec339655ffe1365d194d3cacc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0d747df30bccc368ec8b3fd82ab7e31a = $(`<div id="html_0d747df30bccc368ec8b3fd82ab7e31a" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Fort Worth city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 924,663</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 51.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 19.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 4.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 35.2%</span>             </div>             </div></div></div>`)[0];
+                popup_e6664bfec339655ffe1365d194d3cacc.setContent(html_0d747df30bccc368ec8b3fd82ab7e31a);
+            
+        
+
+        marker_018edcefa452461218f50b506fb696df.bindPopup(popup_e6664bfec339655ffe1365d194d3cacc)
+        ;
+
+        
+    
+    
+            marker_018edcefa452461218f50b506fb696df.bindTooltip(
+                `<div>
+                     Fort Worth city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_018edcefa452461218f50b506fb696df.setIcon(icon_c47e8514e91b28ad2c482eae3ddec7b4);
+            
+    
+            var marker_a0da6a4bf5257db02ab5b5fff7d31ead = L.marker(
+                [32.7357, -97.1081],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_6a12ef7a7cb052decea19524f1878c2b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_df90d7a2cc150a160359b4c9ca91f9ea = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_06d9d81c3bf4cd17be5fcf27a9757315 = $(`<div id="html_06d9d81c3bf4cd17be5fcf27a9757315" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Arlington city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 393,469</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 46.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 22.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 7.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 30.0%</span>             </div>             </div></div></div>`)[0];
+                popup_df90d7a2cc150a160359b4c9ca91f9ea.setContent(html_06d9d81c3bf4cd17be5fcf27a9757315);
+            
+        
+
+        marker_a0da6a4bf5257db02ab5b5fff7d31ead.bindPopup(popup_df90d7a2cc150a160359b4c9ca91f9ea)
+        ;
+
+        
+    
+    
+            marker_a0da6a4bf5257db02ab5b5fff7d31ead.bindTooltip(
+                `<div>
+                     Arlington city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a0da6a4bf5257db02ab5b5fff7d31ead.setIcon(icon_6a12ef7a7cb052decea19524f1878c2b);
+            
+    
+            var marker_866114ef30d0bb209b0d108ae2ba8d25 = L.marker(
+                [33.0198, -96.6989],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_126ef50718deb90bb397f7faf44f7961 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2941cbccba188995696c637f5359509d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c075438e272f33832629a4e91f7ae1ee = $(`<div id="html_c075438e272f33832629a4e91f7ae1ee" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Plano city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 284,948</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 55.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 9.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 22.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 15.6%</span>             </div>             </div></div></div>`)[0];
+                popup_2941cbccba188995696c637f5359509d.setContent(html_c075438e272f33832629a4e91f7ae1ee);
+            
+        
+
+        marker_866114ef30d0bb209b0d108ae2ba8d25.bindPopup(popup_2941cbccba188995696c637f5359509d)
+        ;
+
+        
+    
+    
+            marker_866114ef30d0bb209b0d108ae2ba8d25.bindTooltip(
+                `<div>
+                     Plano city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_866114ef30d0bb209b0d108ae2ba8d25.setIcon(icon_126ef50718deb90bb397f7faf44f7961);
+            
+    
+            var marker_6cc5f1b51750bed9d9ce99f3926056f7 = L.marker(
+                [32.814, -96.9489],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_5273db45e761c1f9522c785cbfb6d757 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b623d7cd64b0a0092143a0d896ac43d6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e2ae888124055dde4934d47a5e87eba0 = $(`<div id="html_e2ae888124055dde4934d47a5e87eba0" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Irving city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 254,962</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 37.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 13.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 22.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 43.2%</span>             </div>             </div></div></div>`)[0];
+                popup_b623d7cd64b0a0092143a0d896ac43d6.setContent(html_e2ae888124055dde4934d47a5e87eba0);
+            
+        
+
+        marker_6cc5f1b51750bed9d9ce99f3926056f7.bindPopup(popup_b623d7cd64b0a0092143a0d896ac43d6)
+        ;
+
+        
+    
+    
+            marker_6cc5f1b51750bed9d9ce99f3926056f7.bindTooltip(
+                `<div>
+                     Irving city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6cc5f1b51750bed9d9ce99f3926056f7.setIcon(icon_5273db45e761c1f9522c785cbfb6d757);
+            
+    
+            var marker_65b39f07c98e17acd0678db1d69ff11b = L.marker(
+                [32.9126, -96.6389],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_f167747ce36e375eb63b5b4b3d2ebe73 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c730a98b5236963b14ec6e9008052d05 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_72d7920c26b69d2f9cdb7b03c98076f2 = $(`<div id="html_72d7920c26b69d2f9cdb7b03c98076f2" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Garland city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 244,026</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 44.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 15.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 10.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 44.5%</span>             </div>             </div></div></div>`)[0];
+                popup_c730a98b5236963b14ec6e9008052d05.setContent(html_72d7920c26b69d2f9cdb7b03c98076f2);
+            
+        
+
+        marker_65b39f07c98e17acd0678db1d69ff11b.bindPopup(popup_c730a98b5236963b14ec6e9008052d05)
+        ;
+
+        
+    
+    
+            marker_65b39f07c98e17acd0678db1d69ff11b.bindTooltip(
+                `<div>
+                     Garland city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_65b39f07c98e17acd0678db1d69ff11b.setIcon(icon_f167747ce36e375eb63b5b4b3d2ebe73);
+            
+    
+            var marker_07b65790834db8765a5b49082060019e = L.marker(
+                [33.1972, -96.6153],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_6248cb6781da6f8e452c329c53f58a2e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca3c4735fc519c325321653cdd111c1c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f881d11dc0e8b30eb9c56b0ea97eaa48 = $(`<div id="html_f881d11dc0e8b30eb9c56b0ea97eaa48" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">McKinney city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 196,160</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 64.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 11.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 12.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 17.2%</span>             </div>             </div></div></div>`)[0];
+                popup_ca3c4735fc519c325321653cdd111c1c.setContent(html_f881d11dc0e8b30eb9c56b0ea97eaa48);
+            
+        
+
+        marker_07b65790834db8765a5b49082060019e.bindPopup(popup_ca3c4735fc519c325321653cdd111c1c)
+        ;
+
+        
+    
+    
+            marker_07b65790834db8765a5b49082060019e.bindTooltip(
+                `<div>
+                     McKinney city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_07b65790834db8765a5b49082060019e.setIcon(icon_6248cb6781da6f8e452c329c53f58a2e);
+            
+    
+            var marker_a55b3eace3c2ac4af279365edd9f82a4 = L.marker(
+                [32.7668, -96.5992],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_8b620bef3e17ecca7f775350c613cdb3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a5685b9b6079ca9a27fc7c74826cf804 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9c563d4a00aca6fa3123d875dd7056b9 = $(`<div id="html_9c563d4a00aca6fa3123d875dd7056b9" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Mesquite city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 149,439</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 45.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 24.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 2.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 44.6%</span>             </div>             </div></div></div>`)[0];
+                popup_a5685b9b6079ca9a27fc7c74826cf804.setContent(html_9c563d4a00aca6fa3123d875dd7056b9);
+            
+        
+
+        marker_a55b3eace3c2ac4af279365edd9f82a4.bindPopup(popup_a5685b9b6079ca9a27fc7c74826cf804)
+        ;
+
+        
+    
+    
+            marker_a55b3eace3c2ac4af279365edd9f82a4.bindTooltip(
+                `<div>
+                     Mesquite city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a55b3eace3c2ac4af279365edd9f82a4.setIcon(icon_8b620bef3e17ecca7f775350c613cdb3);
+            
+    
+            var marker_bc839e19f858a113069389b938c08155 = L.marker(
+                [32.9537, -96.8903],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_ec83d5dfa3d9fbff2fd5dd2c1ad3ad1b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_61c0ee722462185a4d29e9fdefd614f3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_befe0c3a062e9e22598f606195eafe7d = $(`<div id="html_befe0c3a062e9e22598f606195eafe7d" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Carrollton city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 132,284</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 57.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 10.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 15.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 31.9%</span>             </div>             </div></div></div>`)[0];
+                popup_61c0ee722462185a4d29e9fdefd614f3.setContent(html_befe0c3a062e9e22598f606195eafe7d);
+            
+        
+
+        marker_bc839e19f858a113069389b938c08155.bindPopup(popup_61c0ee722462185a4d29e9fdefd614f3)
+        ;
+
+        
+    
+    
+            marker_bc839e19f858a113069389b938c08155.bindTooltip(
+                `<div>
+                     Carrollton city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc839e19f858a113069389b938c08155.setIcon(icon_ec83d5dfa3d9fbff2fd5dd2c1ad3ad1b);
+            
+    
+            var marker_59fc499738f7df868a38123357609347 = L.marker(
+                [33.1507, -96.8236],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_d186c5bd97ca8b47b31f0989884eccef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d969ae2b49db293bff8f14d3af727a9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b84f6575a45add50d2019f42e0ef7ded = $(`<div id="html_b84f6575a45add50d2019f42e0ef7ded" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Frisco city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 202,075</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 53.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 9.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 25.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 12.7%</span>             </div>             </div></div></div>`)[0];
+                popup_8d969ae2b49db293bff8f14d3af727a9.setContent(html_b84f6575a45add50d2019f42e0ef7ded);
+            
+        
+
+        marker_59fc499738f7df868a38123357609347.bindPopup(popup_8d969ae2b49db293bff8f14d3af727a9)
+        ;
+
+        
+    
+    
+            marker_59fc499738f7df868a38123357609347.bindTooltip(
+                `<div>
+                     Frisco city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_59fc499738f7df868a38123357609347.setIcon(icon_d186c5bd97ca8b47b31f0989884eccef);
+            
+    
+            var marker_e7beedf8f6fd08db4ead1644535e5775 = L.marker(
+                [33.2148, -97.1331],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_7125cf618d4415f7af9199916bc5f873 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7c80a3446ea4d2404d8ee7fad0237561 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_99d2f7b98381e2a6889033fa5f8ecb07 = $(`<div id="html_99d2f7b98381e2a6889033fa5f8ecb07" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Denton city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 142,262</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 67.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 11.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 24.1%</span>             </div>             </div></div></div>`)[0];
+                popup_7c80a3446ea4d2404d8ee7fad0237561.setContent(html_99d2f7b98381e2a6889033fa5f8ecb07);
+            
+        
+
+        marker_e7beedf8f6fd08db4ead1644535e5775.bindPopup(popup_7c80a3446ea4d2404d8ee7fad0237561)
+        ;
+
+        
+    
+    
+            marker_e7beedf8f6fd08db4ead1644535e5775.bindTooltip(
+                `<div>
+                     Denton city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e7beedf8f6fd08db4ead1644535e5775.setIcon(icon_7125cf618d4415f7af9199916bc5f873);
+            
+    
+            var marker_03f62f5ec13cdd9657418c5f6134b6ef = L.marker(
+                [32.9483, -96.7299],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_0c24d8cd756ed872f33925870951982d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6de4baa4723633e793a675b6add9a40c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a80c0ef4542a539ef97bf65433b89e0f = $(`<div id="html_a80c0ef4542a539ef97bf65433b89e0f" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Richardson city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 118,063</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 59.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 12.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 15.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 17.1%</span>             </div>             </div></div></div>`)[0];
+                popup_6de4baa4723633e793a675b6add9a40c.setContent(html_a80c0ef4542a539ef97bf65433b89e0f);
+            
+        
+
+        marker_03f62f5ec13cdd9657418c5f6134b6ef.bindPopup(popup_6de4baa4723633e793a675b6add9a40c)
+        ;
+
+        
+    
+    
+            marker_03f62f5ec13cdd9657418c5f6134b6ef.bindTooltip(
+                `<div>
+                     Richardson city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03f62f5ec13cdd9657418c5f6134b6ef.setIcon(icon_0c24d8cd756ed872f33925870951982d);
+            
+    
+            var marker_a22e89c9044bf177a867623891501ad3 = L.marker(
+                [33.0462, -96.9942],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_344f4c1a56bc5ab798c78b0687c5b26e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4f50779362366147c7f73308c5544fe9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d2db8f3a233f78ee0c1961b8de77fb21 = $(`<div id="html_d2db8f3a233f78ee0c1961b8de77fb21" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Lewisville city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 125,028</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 54.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 12.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 13.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 28.5%</span>             </div>             </div></div></div>`)[0];
+                popup_4f50779362366147c7f73308c5544fe9.setContent(html_d2db8f3a233f78ee0c1961b8de77fb21);
+            
+        
+
+        marker_a22e89c9044bf177a867623891501ad3.bindPopup(popup_4f50779362366147c7f73308c5544fe9)
+        ;
+
+        
+    
+    
+            marker_a22e89c9044bf177a867623891501ad3.bindTooltip(
+                `<div>
+                     Lewisville city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a22e89c9044bf177a867623891501ad3.setIcon(icon_344f4c1a56bc5ab798c78b0687c5b26e);
+            
+    
+            var marker_a205a0529533513f5a786616a93d466e = L.marker(
+                [33.1031, -96.6706],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_ef061a667edcf2a48acc4ec65fc9d0ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ccfcae18dc8694175cadf7c56ac4af6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f9581f1d3dcc77d28bbe8891ebd91809 = $(`<div id="html_f9581f1d3dcc77d28bbe8891ebd91809" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Allen city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 105,444</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 57.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 11.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 19.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 11.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #9467bd; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Other: 0.2%</span>             </div>             </div></div></div>`)[0];
+                popup_9ccfcae18dc8694175cadf7c56ac4af6.setContent(html_f9581f1d3dcc77d28bbe8891ebd91809);
+            
+        
+
+        marker_a205a0529533513f5a786616a93d466e.bindPopup(popup_9ccfcae18dc8694175cadf7c56ac4af6)
+        ;
+
+        
+    
+    
+            marker_a205a0529533513f5a786616a93d466e.bindTooltip(
+                `<div>
+                     Allen city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a205a0529533513f5a786616a93d466e.setIcon(icon_ef061a667edcf2a48acc4ec65fc9d0ca);
+            
+    
+            var marker_09937fcb1eca49542e8e10b9e5e8eef3 = L.marker(
+                [33.0145, -97.0969],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_9b72035e9b8ea9310ada13d0561d3b7c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c5886f831f79fcdbc271e3e1f7512e18 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f74a84e1931b3540ed2d0ad87343e1d1 = $(`<div id="html_f74a84e1931b3540ed2d0ad87343e1d1" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Flower Mound town (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 76,630</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 73.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 3.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 13.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 11.7%</span>             </div>             </div></div></div>`)[0];
+                popup_c5886f831f79fcdbc271e3e1f7512e18.setContent(html_f74a84e1931b3540ed2d0ad87343e1d1);
+            
+        
+
+        marker_09937fcb1eca49542e8e10b9e5e8eef3.bindPopup(popup_c5886f831f79fcdbc271e3e1f7512e18)
+        ;
+
+        
+    
+    
+            marker_09937fcb1eca49542e8e10b9e5e8eef3.bindTooltip(
+                `<div>
+                     Flower Mound town - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_09937fcb1eca49542e8e10b9e5e8eef3.setIcon(icon_9b72035e9b8ea9310ada13d0561d3b7c);
+            
+    
+            var marker_234d779d5f147f9d2c06aedbbf446073 = L.marker(
+                [32.8371, -97.082],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_492e81c242882c87c2dbffa77f6432c5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51a14dcd9071eb646a1238762d2203a1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9cf40bdf67ddf4beb8fd7e79946543ee = $(`<div id="html_9cf40bdf67ddf4beb8fd7e79946543ee" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Euless city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 60,360</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 50.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 16.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 12.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 20.0%</span>             </div>             </div></div></div>`)[0];
+                popup_51a14dcd9071eb646a1238762d2203a1.setContent(html_9cf40bdf67ddf4beb8fd7e79946543ee);
+            
+        
+
+        marker_234d779d5f147f9d2c06aedbbf446073.bindPopup(popup_51a14dcd9071eb646a1238762d2203a1)
+        ;
+
+        
+    
+    
+            marker_234d779d5f147f9d2c06aedbbf446073.bindTooltip(
+                `<div>
+                     Euless city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_234d779d5f147f9d2c06aedbbf446073.setIcon(icon_492e81c242882c87c2dbffa77f6432c5);
+            
+    
+            var marker_9f42055e61e24501af93c4d9c9aee8bf = L.marker(
+                [32.844, -97.1431],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_4600fc46305e2bbe3f55320d3fa14676 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8945c88f1e4ca700e97c1436e4b475ae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7f42d780563938ee4362d4e3655a0c66 = $(`<div id="html_7f42d780563938ee4362d4e3655a0c66" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Bedford city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 49,455</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 66.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 11.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 6.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 17.8%</span>             </div>             </div></div></div>`)[0];
+                popup_8945c88f1e4ca700e97c1436e4b475ae.setContent(html_7f42d780563938ee4362d4e3655a0c66);
+            
+        
+
+        marker_9f42055e61e24501af93c4d9c9aee8bf.bindPopup(popup_8945c88f1e4ca700e97c1436e4b475ae)
+        ;
+
+        
+    
+    
+            marker_9f42055e61e24501af93c4d9c9aee8bf.bindTooltip(
+                `<div>
+                     Bedford city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9f42055e61e24501af93c4d9c9aee8bf.setIcon(icon_4600fc46305e2bbe3f55320d3fa14676);
+            
+    
+            var marker_87bdc9da0c2ba1232eef3106409cf1f1 = L.marker(
+                [33.0151, -96.5389],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_6ff8ca31a5e22b33736f93b1f9a46512 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9276a2c12870191a0815c87ad0ec02e4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_347649cac2765c889cc9b9b775471d06 = $(`<div id="html_347649cac2765c889cc9b9b775471d06" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Wylie city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 57,063</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 61.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 13.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 9.9%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 18.0%</span>             </div>             </div></div></div>`)[0];
+                popup_9276a2c12870191a0815c87ad0ec02e4.setContent(html_347649cac2765c889cc9b9b775471d06);
+            
+        
+
+        marker_87bdc9da0c2ba1232eef3106409cf1f1.bindPopup(popup_9276a2c12870191a0815c87ad0ec02e4)
+        ;
+
+        
+    
+    
+            marker_87bdc9da0c2ba1232eef3106409cf1f1.bindTooltip(
+                `<div>
+                     Wylie city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_87bdc9da0c2ba1232eef3106409cf1f1.setIcon(icon_6ff8ca31a5e22b33736f93b1f9a46512);
+            
+    
+            var marker_a1d3de67038f683c93830644fcf6fcce = L.marker(
+                [33.089, -96.8928],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_177c49868570d4bc82cdb92f1a0e2262 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_48985130908e8400aa1c598ff3784a2f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e3354e7db93e63b67c811dcb19576c3 = $(`<div id="html_7e3354e7db93e63b67c811dcb19576c3" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">The Colony city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 44,323</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 64.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 10.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 8.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 21.2%</span>             </div>             </div></div></div>`)[0];
+                popup_48985130908e8400aa1c598ff3784a2f.setContent(html_7e3354e7db93e63b67c811dcb19576c3);
+            
+        
+
+        marker_a1d3de67038f683c93830644fcf6fcce.bindPopup(popup_48985130908e8400aa1c598ff3784a2f)
+        ;
+
+        
+    
+    
+            marker_a1d3de67038f683c93830644fcf6fcce.bindTooltip(
+                `<div>
+                     The Colony city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a1d3de67038f683c93830644fcf6fcce.setIcon(icon_177c49868570d4bc82cdb92f1a0e2262);
+            
+    
+            var marker_1d9e95b312b65ab277795b3125d9ca9b = L.marker(
+                [32.9412, -97.1342],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_25d5bf4ab678e019bc7f5a6303353e6d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a39fb837ffd005498bdef7f78a30511 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_39a115c511a9e11024d068dda7f44af0 = $(`<div id="html_39a115c511a9e11024d068dda7f44af0" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Southlake city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 30,779</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 75.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 1.4%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 17.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 8.9%</span>             </div>             </div></div></div>`)[0];
+                popup_9a39fb837ffd005498bdef7f78a30511.setContent(html_39a115c511a9e11024d068dda7f44af0);
+            
+        
+
+        marker_1d9e95b312b65ab277795b3125d9ca9b.bindPopup(popup_9a39fb837ffd005498bdef7f78a30511)
+        ;
+
+        
+    
+    
+            marker_1d9e95b312b65ab277795b3125d9ca9b.bindTooltip(
+                `<div>
+                     Southlake city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1d9e95b312b65ab277795b3125d9ca9b.setIcon(icon_25d5bf4ab678e019bc7f5a6303353e6d);
+            
+    
+            var marker_a2e96b7b834723ea3c2a5bdac8b237ed = L.marker(
+                [32.8501, -96.8003],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_7ba17aa657af14619116d4de80be07f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_01b6ca8157cc93518435344cff855381 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4f7b4c68dad49700560ebe939734654f = $(`<div id="html_4f7b4c68dad49700560ebe939734654f" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">University Park city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 25,179</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 86.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 1.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 4.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 7.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #9467bd; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Other: 0.9%</span>             </div>             </div></div></div>`)[0];
+                popup_01b6ca8157cc93518435344cff855381.setContent(html_4f7b4c68dad49700560ebe939734654f);
+            
+        
+
+        marker_a2e96b7b834723ea3c2a5bdac8b237ed.bindPopup(popup_01b6ca8157cc93518435344cff855381)
+        ;
+
+        
+    
+    
+            marker_a2e96b7b834723ea3c2a5bdac8b237ed.bindTooltip(
+                `<div>
+                     University Park city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a2e96b7b834723ea3c2a5bdac8b237ed.setIcon(icon_7ba17aa657af14619116d4de80be07f8);
+            
+    
+            var marker_f0fb6b07f7671b5f25d9a89944e8dbfb = L.marker(
+                [32.9265, -96.8961],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_70dc3640e3148a152724a28d4929dde3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1aef093be1116545791a646694a403c6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c21187c0567de97e3bb773b4d23305d7 = $(`<div id="html_c21187c0567de97e3bb773b4d23305d7" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Farmers Branch city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 35,985</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 64.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 8.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 10.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 44.3%</span>             </div>             </div></div></div>`)[0];
+                popup_1aef093be1116545791a646694a403c6.setContent(html_c21187c0567de97e3bb773b4d23305d7);
+            
+        
+
+        marker_f0fb6b07f7671b5f25d9a89944e8dbfb.bindPopup(popup_1aef093be1116545791a646694a403c6)
+        ;
+
+        
+    
+    
+            marker_f0fb6b07f7671b5f25d9a89944e8dbfb.bindTooltip(
+                `<div>
+                     Farmers Branch city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f0fb6b07f7671b5f25d9a89944e8dbfb.setIcon(icon_70dc3640e3148a152724a28d4929dde3);
+            
+    
+            var marker_58be4fa18b39c7a7bd0ec12c387d7d06 = L.marker(
+                [32.5921, -96.7561],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_0d8fb9af47cdeafcc7ae9cb71c2e2559 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_977117c446409a1892d1b0acb3eac935 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_81188162ee31cc9294b37ca181f9aa48 = $(`<div id="html_81188162ee31cc9294b37ca181f9aa48" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Lancaster city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 40,958</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 18.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 67.5%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 0.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 21.6%</span>             </div>             </div></div></div>`)[0];
+                popup_977117c446409a1892d1b0acb3eac935.setContent(html_81188162ee31cc9294b37ca181f9aa48);
+            
+        
+
+        marker_58be4fa18b39c7a7bd0ec12c387d7d06.bindPopup(popup_977117c446409a1892d1b0acb3eac935)
+        ;
+
+        
+    
+    
+            marker_58be4fa18b39c7a7bd0ec12c387d7d06.bindTooltip(
+                `<div>
+                     Lancaster city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_58be4fa18b39c7a7bd0ec12c387d7d06.setIcon(icon_0d8fb9af47cdeafcc7ae9cb71c2e2559);
+            
+    
+            var marker_b250dfa8a6f1c1e84fa9960ea34a45f0 = L.marker(
+                [32.5632, -97.1417],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_823ba412267f70b3e55b920f6d96fbcb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ce723aff595328bcacf8eed7f60be36 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_295838c2800162fdeca57dcb68a8bcc7 = $(`<div id="html_295838c2800162fdeca57dcb68a8bcc7" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Mansfield city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 73,680</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 59.2%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 23.3%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 4.6%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 16.8%</span>             </div>             </div></div></div>`)[0];
+                popup_7ce723aff595328bcacf8eed7f60be36.setContent(html_295838c2800162fdeca57dcb68a8bcc7);
+            
+        
+
+        marker_b250dfa8a6f1c1e84fa9960ea34a45f0.bindPopup(popup_7ce723aff595328bcacf8eed7f60be36)
+        ;
+
+        
+    
+    
+            marker_b250dfa8a6f1c1e84fa9960ea34a45f0.bindTooltip(
+                `<div>
+                     Mansfield city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b250dfa8a6f1c1e84fa9960ea34a45f0.setIcon(icon_823ba412267f70b3e55b920f6d96fbcb);
+            
+    
+            var marker_97970891ef1e781c63eeb0058721c244 = L.marker(
+                [32.9029, -96.5639],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_52695af386f7df066a7b9708ef445ca5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_21e38e48c8a18ed4c0dd946e4fbd69af = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_17070ef16413b49d7ba1ffba14ce5227 = $(`<div id="html_17070ef16413b49d7ba1ffba14ce5227" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Rowlett city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 63,291</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 58.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 22.0%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 7.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 21.5%</span>             </div>             </div></div></div>`)[0];
+                popup_21e38e48c8a18ed4c0dd946e4fbd69af.setContent(html_17070ef16413b49d7ba1ffba14ce5227);
+            
+        
+
+        marker_97970891ef1e781c63eeb0058721c244.bindPopup(popup_21e38e48c8a18ed4c0dd946e4fbd69af)
+        ;
+
+        
+    
+    
+            marker_97970891ef1e781c63eeb0058721c244.bindTooltip(
+                `<div>
+                     Rowlett city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_97970891ef1e781c63eeb0058721c244.setIcon(icon_52695af386f7df066a7b9708ef445ca5);
+            
+    
+            var marker_2cb6f8208cf020a0eed36e69b45dac19 = L.marker(
+                [32.9312, -96.4597],
+                {
+}
+            ).addTo(feature_group_6e98787468888d157bbb6d6245be714b);
+        
+    
+            var icon_bc0ce681040b986bf40f4280ea280a76 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c0a67c922641feb3650908b4b57364e7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e5cd6b2197883e99cd9bb1dffa8ab3b1 = $(`<div id="html_e5cd6b2197883e99cd9bb1dffa8ab3b1" style="width: 100.0%; height: 100.0%;">     <div style="width: 200px; font-family: Arial, sans-serif;">         <h4 style="margin: 0 0 10px 0;">Rockwall city (2022)</h4>         <p style="margin: 0 0 10px 0;"><strong>Population: 47,859</strong></p>         <div style="margin-bottom: 5px;">                  <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #1f77b4; margin-right: 8px;"></div>                 <span style="font-size: 12px;">White: 76.8%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #ff7f0e; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Black: 7.1%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #2ca02c; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Asian: 3.7%</span>             </div>                          <div style="display: flex; align-items: center; margin-bottom: 3px;">                 <div style="width: 15px; height: 15px; background-color: #d62728; margin-right: 8px;"></div>                 <span style="font-size: 12px;">Hispanic: 17.4%</span>             </div>             </div></div></div>`)[0];
+                popup_c0a67c922641feb3650908b4b57364e7.setContent(html_e5cd6b2197883e99cd9bb1dffa8ab3b1);
+            
+        
+
+        marker_2cb6f8208cf020a0eed36e69b45dac19.bindPopup(popup_c0a67c922641feb3650908b4b57364e7)
+        ;
+
+        
+    
+    
+            marker_2cb6f8208cf020a0eed36e69b45dac19.bindTooltip(
+                `<div>
+                     Rockwall city - 2022
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2cb6f8208cf020a0eed36e69b45dac19.setIcon(icon_bc0ce681040b986bf40f4280ea280a76);
+            
+    
+            feature_group_6e98787468888d157bbb6d6245be714b.addTo(map_ea05f43b1a6d8f87109c31501e898bd6);
+        
+    
+            var feature_group_5eae7d46b233a0b87c1c8f06a94ede21 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_fc7176546e15c7003d7f4bc001405af8 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0f3f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_22682a4b44a95f93e138d35d5abefad9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dec0d222b2be9d8ba27ebd604a80bf69 = $(`<div id="html_dec0d222b2be9d8ba27ebd604a80bf69" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Dallas city</h4>                     <p><strong>Growth Rate:</strong> 2.5%</p>                     <p><strong>2022 Population:</strong> 1,300,642</p>                 </div>                 </div>`)[0];
+                popup_22682a4b44a95f93e138d35d5abefad9.setContent(html_dec0d222b2be9d8ba27ebd604a80bf69);
+            
+        
+
+        circle_marker_fc7176546e15c7003d7f4bc001405af8.bindPopup(popup_22682a4b44a95f93e138d35d5abefad9)
+        ;
+
+        
+    
+    
+            circle_marker_fc7176546e15c7003d7f4bc001405af8.bindTooltip(
+                `<div>
+                     Dallas city: 2.5% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_867a723f1c27eca559a66cf3ced9bfb9 = L.circleMarker(
+                [32.7555, -97.3308],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_e1faec0831dd286da86180f93d01015c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_45b852950e460b6826eb145aac36d76f = $(`<div id="html_45b852950e460b6826eb145aac36d76f" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Fort Worth city</h4>                     <p><strong>Growth Rate:</strong> 36.2%</p>                     <p><strong>2022 Population:</strong> 924,663</p>                 </div>                 </div>`)[0];
+                popup_e1faec0831dd286da86180f93d01015c.setContent(html_45b852950e460b6826eb145aac36d76f);
+            
+        
+
+        circle_marker_867a723f1c27eca559a66cf3ced9bfb9.bindPopup(popup_e1faec0831dd286da86180f93d01015c)
+        ;
+
+        
+    
+    
+            circle_marker_867a723f1c27eca559a66cf3ced9bfb9.bindTooltip(
+                `<div>
+                     Fort Worth city: 36.2% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ba06d1de9d01590fec11d3a58e438be1 = L.circleMarker(
+                [32.7357, -97.1081],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0f3f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.3469, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_e6fb46f0bdb7c0d05e634627f3c86488 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4724e12ad14f366019698f0cf13dbbd2 = $(`<div id="html_4724e12ad14f366019698f0cf13dbbd2" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Arlington city</h4>                     <p><strong>Growth Rate:</strong> 6.3%</p>                     <p><strong>2022 Population:</strong> 393,469</p>                 </div>                 </div>`)[0];
+                popup_e6fb46f0bdb7c0d05e634627f3c86488.setContent(html_4724e12ad14f366019698f0cf13dbbd2);
+            
+        
+
+        circle_marker_ba06d1de9d01590fec11d3a58e438be1.bindPopup(popup_e6fb46f0bdb7c0d05e634627f3c86488)
+        ;
+
+        
+    
+    
+            circle_marker_ba06d1de9d01590fec11d3a58e438be1.bindTooltip(
+                `<div>
+                     Arlington city: 6.3% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2add015d1fc7ced711f65c5cc991c922 = L.circleMarker(
+                [33.0198, -96.6989],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0f3f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.4948, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_9b7996d17dc9186d96c7ecd1f81df26a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7117887c316244657a072919ac841f9f = $(`<div id="html_7117887c316244657a072919ac841f9f" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Plano city</h4>                     <p><strong>Growth Rate:</strong> 8.8%</p>                     <p><strong>2022 Population:</strong> 284,948</p>                 </div>                 </div>`)[0];
+                popup_9b7996d17dc9186d96c7ecd1f81df26a.setContent(html_7117887c316244657a072919ac841f9f);
+            
+        
+
+        circle_marker_2add015d1fc7ced711f65c5cc991c922.bindPopup(popup_9b7996d17dc9186d96c7ecd1f81df26a)
+        ;
+
+        
+    
+    
+            circle_marker_2add015d1fc7ced711f65c5cc991c922.bindTooltip(
+                `<div>
+                     Plano city: 8.8% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f6d6fc640600e15554ad0779185706ac = L.circleMarker(
+                [32.814, -96.9489],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.4962, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_73e666c2f796d49b0783e010d4d45e23 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_12d0ad75af271797029f49eca4e95b19 = $(`<div id="html_12d0ad75af271797029f49eca4e95b19" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Irving city</h4>                     <p><strong>Growth Rate:</strong> 28.9%</p>                     <p><strong>2022 Population:</strong> 254,962</p>                 </div>                 </div>`)[0];
+                popup_73e666c2f796d49b0783e010d4d45e23.setContent(html_12d0ad75af271797029f49eca4e95b19);
+            
+        
+
+        circle_marker_f6d6fc640600e15554ad0779185706ac.bindPopup(popup_73e666c2f796d49b0783e010d4d45e23)
+        ;
+
+        
+    
+    
+            circle_marker_f6d6fc640600e15554ad0779185706ac.bindTooltip(
+                `<div>
+                     Irving city: 28.9% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29e12899c533c1693f477e0de50f60bf = L.circleMarker(
+                [32.9126, -96.6389],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.4026, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_846c49e43fd7e4c3b1188ea71c08232e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b5282cbcf5f20d3659050b416b0030d = $(`<div id="html_5b5282cbcf5f20d3659050b416b0030d" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Garland city</h4>                     <p><strong>Growth Rate:</strong> 12.3%</p>                     <p><strong>2022 Population:</strong> 244,026</p>                 </div>                 </div>`)[0];
+                popup_846c49e43fd7e4c3b1188ea71c08232e.setContent(html_5b5282cbcf5f20d3659050b416b0030d);
+            
+        
+
+        circle_marker_29e12899c533c1693f477e0de50f60bf.bindPopup(popup_846c49e43fd7e4c3b1188ea71c08232e)
+        ;
+
+        
+    
+    
+            circle_marker_29e12899c533c1693f477e0de50f60bf.bindTooltip(
+                `<div>
+                     Garland city: 12.3% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_be419c12ee77dd9498ef6902f0b6915c = L.circleMarker(
+                [33.1972, -96.6153],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.616, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_3aa7233ddaf159af5722da817120cf3f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f00603620d76bcbbda121f1037e1784a = $(`<div id="html_f00603620d76bcbbda121f1037e1784a" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>McKinney city</h4>                     <p><strong>Growth Rate:</strong> 72.7%</p>                     <p><strong>2022 Population:</strong> 196,160</p>                 </div>                 </div>`)[0];
+                popup_3aa7233ddaf159af5722da817120cf3f.setContent(html_f00603620d76bcbbda121f1037e1784a);
+            
+        
+
+        circle_marker_be419c12ee77dd9498ef6902f0b6915c.bindPopup(popup_3aa7233ddaf159af5722da817120cf3f)
+        ;
+
+        
+    
+    
+            circle_marker_be419c12ee77dd9498ef6902f0b6915c.bindTooltip(
+                `<div>
+                     McKinney city: 72.7% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_30717c26f4a26ede69dac5a9236730f5 = L.circleMarker(
+                [32.7668, -96.5992],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.9439, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_815638b122b6a534defd1846c104b24f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_45382ae6b6bc9e6bbf2fa6082714b2de = $(`<div id="html_45382ae6b6bc9e6bbf2fa6082714b2de" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Mesquite city</h4>                     <p><strong>Growth Rate:</strong> 14.3%</p>                     <p><strong>2022 Population:</strong> 149,439</p>                 </div>                 </div>`)[0];
+                popup_815638b122b6a534defd1846c104b24f.setContent(html_45382ae6b6bc9e6bbf2fa6082714b2de);
+            
+        
+
+        circle_marker_30717c26f4a26ede69dac5a9236730f5.bindPopup(popup_815638b122b6a534defd1846c104b24f)
+        ;
+
+        
+    
+    
+            circle_marker_30717c26f4a26ede69dac5a9236730f5.bindTooltip(
+                `<div>
+                     Mesquite city: 14.3% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5143879c1ddc26d3ea5cb1596c9ecba2 = L.circleMarker(
+                [32.9537, -96.8903],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0f3f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.2284, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_5e302e4d20a9a792cc13c74826f06659 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6203d057cdcd5a5fd606381aa31fc6fb = $(`<div id="html_6203d057cdcd5a5fd606381aa31fc6fb" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Carrollton city</h4>                     <p><strong>Growth Rate:</strong> 7.0%</p>                     <p><strong>2022 Population:</strong> 132,284</p>                 </div>                 </div>`)[0];
+                popup_5e302e4d20a9a792cc13c74826f06659.setContent(html_6203d057cdcd5a5fd606381aa31fc6fb);
+            
+        
+
+        circle_marker_5143879c1ddc26d3ea5cb1596c9ecba2.bindPopup(popup_5e302e4d20a9a792cc13c74826f06659)
+        ;
+
+        
+    
+    
+            circle_marker_5143879c1ddc26d3ea5cb1596c9ecba2.bindTooltip(
+                `<div>
+                     Carrollton city: 7.0% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3881504915124e48a6ea873e3abd40f5 = L.circleMarker(
+                [33.1507, -96.8236],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.2075, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_297855430ec588488720e4a6741466a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1f583026f2f9e744c864776b2dfcea88 = $(`<div id="html_1f583026f2f9e744c864776b2dfcea88" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Frisco city</h4>                     <p><strong>Growth Rate:</strong> 130.4%</p>                     <p><strong>2022 Population:</strong> 202,075</p>                 </div>                 </div>`)[0];
+                popup_297855430ec588488720e4a6741466a4.setContent(html_1f583026f2f9e744c864776b2dfcea88);
+            
+        
+
+        circle_marker_3881504915124e48a6ea873e3abd40f5.bindPopup(popup_297855430ec588488720e4a6741466a4)
+        ;
+
+        
+    
+    
+            circle_marker_3881504915124e48a6ea873e3abd40f5.bindTooltip(
+                `<div>
+                     Frisco city: 130.4% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0add5b0de9971d4ad2125440bb45b227 = L.circleMarker(
+                [33.2148, -97.1331],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.2262, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_6d9641984f19ef2fa458ae86e7df17b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31a8af84bbfd48c8f08ffb11a4eb212f = $(`<div id="html_31a8af84bbfd48c8f08ffb11a4eb212f" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Denton city</h4>                     <p><strong>Growth Rate:</strong> 23.8%</p>                     <p><strong>2022 Population:</strong> 142,262</p>                 </div>                 </div>`)[0];
+                popup_6d9641984f19ef2fa458ae86e7df17b9.setContent(html_31a8af84bbfd48c8f08ffb11a4eb212f);
+            
+        
+
+        circle_marker_0add5b0de9971d4ad2125440bb45b227.bindPopup(popup_6d9641984f19ef2fa458ae86e7df17b9)
+        ;
+
+        
+    
+    
+            circle_marker_0add5b0de9971d4ad2125440bb45b227.bindTooltip(
+                `<div>
+                     Denton city: 23.8% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5d289e02de8e6308ca46bea04d702c57 = L.circleMarker(
+                [32.9483, -96.7299],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.8063, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_c418ea3657c1846067806cad40045911 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7317e55785d0a960edbef1023714b375 = $(`<div id="html_7317e55785d0a960edbef1023714b375" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Richardson city</h4>                     <p><strong>Growth Rate:</strong> 18.0%</p>                     <p><strong>2022 Population:</strong> 118,063</p>                 </div>                 </div>`)[0];
+                popup_c418ea3657c1846067806cad40045911.setContent(html_7317e55785d0a960edbef1023714b375);
+            
+        
+
+        circle_marker_5d289e02de8e6308ca46bea04d702c57.bindPopup(popup_c418ea3657c1846067806cad40045911)
+        ;
+
+        
+    
+    
+            circle_marker_5d289e02de8e6308ca46bea04d702c57.bindTooltip(
+                `<div>
+                     Richardson city: 18.0% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bedc9de18fb5c1498776450ad464642f = L.circleMarker(
+                [33.0462, -96.9942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.5028, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_f6b056d43143f4896afa130f580cf72f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f565b046805b2a458b704e35d0aa8dec = $(`<div id="html_f565b046805b2a458b704e35d0aa8dec" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Lewisville city</h4>                     <p><strong>Growth Rate:</strong> 26.9%</p>                     <p><strong>2022 Population:</strong> 125,028</p>                 </div>                 </div>`)[0];
+                popup_f6b056d43143f4896afa130f580cf72f.setContent(html_f565b046805b2a458b704e35d0aa8dec);
+            
+        
+
+        circle_marker_bedc9de18fb5c1498776450ad464642f.bindPopup(popup_f6b056d43143f4896afa130f580cf72f)
+        ;
+
+        
+    
+    
+            circle_marker_bedc9de18fb5c1498776450ad464642f.bindTooltip(
+                `<div>
+                     Lewisville city: 26.9% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_221d5cd5e857b5e60d95f4e966f5cf3f = L.circleMarker(
+                [33.1031, -96.6706],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.5444, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_7123265cbb5b819e7929fc29ee3b9248 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d6233482053bfa953facd773e7a72b2 = $(`<div id="html_4d6233482053bfa953facd773e7a72b2" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Allen city</h4>                     <p><strong>Growth Rate:</strong> 36.8%</p>                     <p><strong>2022 Population:</strong> 105,444</p>                 </div>                 </div>`)[0];
+                popup_7123265cbb5b819e7929fc29ee3b9248.setContent(html_4d6233482053bfa953facd773e7a72b2);
+            
+        
+
+        circle_marker_221d5cd5e857b5e60d95f4e966f5cf3f.bindPopup(popup_7123265cbb5b819e7929fc29ee3b9248)
+        ;
+
+        
+    
+    
+            circle_marker_221d5cd5e857b5e60d95f4e966f5cf3f.bindTooltip(
+                `<div>
+                     Allen city: 36.8% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0e714686ae2d92668123d83478a3f6ed = L.circleMarker(
+                [33.0145, -97.0969],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.663, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_b2112be2bb236cea689c33af46fdb9ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8c56ece075a1bbd5c3ceed7b6afd2743 = $(`<div id="html_8c56ece075a1bbd5c3ceed7b6afd2743" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Flower Mound town</h4>                     <p><strong>Growth Rate:</strong> 13.2%</p>                     <p><strong>2022 Population:</strong> 76,630</p>                 </div>                 </div>`)[0];
+                popup_b2112be2bb236cea689c33af46fdb9ee.setContent(html_8c56ece075a1bbd5c3ceed7b6afd2743);
+            
+        
+
+        circle_marker_0e714686ae2d92668123d83478a3f6ed.bindPopup(popup_b2112be2bb236cea689c33af46fdb9ee)
+        ;
+
+        
+    
+    
+            circle_marker_0e714686ae2d92668123d83478a3f6ed.bindTooltip(
+                `<div>
+                     Flower Mound town: 13.2% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e8cd995e43673ccc4f831f42c995c3b2 = L.circleMarker(
+                [32.8371, -97.082],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.036, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_8e1ecdd3ca6bfdb90b58e0e71ae0a7ce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac3fe23d9455993a36f3dda1c5f2f3a1 = $(`<div id="html_ac3fe23d9455993a36f3dda1c5f2f3a1" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Euless city</h4>                     <p><strong>Growth Rate:</strong> 15.8%</p>                     <p><strong>2022 Population:</strong> 60,360</p>                 </div>                 </div>`)[0];
+                popup_8e1ecdd3ca6bfdb90b58e0e71ae0a7ce.setContent(html_ac3fe23d9455993a36f3dda1c5f2f3a1);
+            
+        
+
+        circle_marker_e8cd995e43673ccc4f831f42c995c3b2.bindPopup(popup_8e1ecdd3ca6bfdb90b58e0e71ae0a7ce)
+        ;
+
+        
+    
+    
+            circle_marker_e8cd995e43673ccc4f831f42c995c3b2.bindTooltip(
+                `<div>
+                     Euless city: 15.8% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_321e23d561786cfa9da4cd56f2830b98 = L.circleMarker(
+                [32.844, -97.1431],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0f3f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_91531e63d38cda9b4e567a331a285c09 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_142e6654ef5109b8f06c9a22d8f5f820 = $(`<div id="html_142e6654ef5109b8f06c9a22d8f5f820" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Bedford city</h4>                     <p><strong>Growth Rate:</strong> 1.1%</p>                     <p><strong>2022 Population:</strong> 49,455</p>                 </div>                 </div>`)[0];
+                popup_91531e63d38cda9b4e567a331a285c09.setContent(html_142e6654ef5109b8f06c9a22d8f5f820);
+            
+        
+
+        circle_marker_321e23d561786cfa9da4cd56f2830b98.bindPopup(popup_91531e63d38cda9b4e567a331a285c09)
+        ;
+
+        
+    
+    
+            circle_marker_321e23d561786cfa9da4cd56f2830b98.bindTooltip(
+                `<div>
+                     Bedford city: 1.1% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_65be81ec630bd7189194cd676ba49ce9 = L.circleMarker(
+                [33.0151, -96.5389],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.7063, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_ada40040d2ec6a12623ce414aee5b62b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4dca877b97a5a203e5be4d7de96244f8 = $(`<div id="html_4dca877b97a5a203e5be4d7de96244f8" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Wylie city</h4>                     <p><strong>Growth Rate:</strong> 67.1%</p>                     <p><strong>2022 Population:</strong> 57,063</p>                 </div>                 </div>`)[0];
+                popup_ada40040d2ec6a12623ce414aee5b62b.setContent(html_4dca877b97a5a203e5be4d7de96244f8);
+            
+        
+
+        circle_marker_65be81ec630bd7189194cd676ba49ce9.bindPopup(popup_ada40040d2ec6a12623ce414aee5b62b)
+        ;
+
+        
+    
+    
+            circle_marker_65be81ec630bd7189194cd676ba49ce9.bindTooltip(
+                `<div>
+                     Wylie city: 67.1% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9023c0de93472937ef223ab8bbc21810 = L.circleMarker(
+                [33.089, -96.8928],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0f3f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_216c33ba4374c0fb2a284d4b10b4ee43 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ac7809fd47a5d8711a1131cb8310208 = $(`<div id="html_5ac7809fd47a5d8711a1131cb8310208" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>The Colony city</h4>                     <p><strong>Growth Rate:</strong> 7.1%</p>                     <p><strong>2022 Population:</strong> 44,323</p>                 </div>                 </div>`)[0];
+                popup_216c33ba4374c0fb2a284d4b10b4ee43.setContent(html_5ac7809fd47a5d8711a1131cb8310208);
+            
+        
+
+        circle_marker_9023c0de93472937ef223ab8bbc21810.bindPopup(popup_216c33ba4374c0fb2a284d4b10b4ee43)
+        ;
+
+        
+    
+    
+            circle_marker_9023c0de93472937ef223ab8bbc21810.bindTooltip(
+                `<div>
+                     The Colony city: 7.1% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_09e205a0d91bb68dc77d542d21e57fdb = L.circleMarker(
+                [32.9412, -97.1342],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_fafd2386be1e5de45a4453740b00dab6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1ade6c37e50bcc477ba2193df759cf1 = $(`<div id="html_f1ade6c37e50bcc477ba2193df759cf1" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Southlake city</h4>                     <p><strong>Growth Rate:</strong> 18.1%</p>                     <p><strong>2022 Population:</strong> 30,779</p>                 </div>                 </div>`)[0];
+                popup_fafd2386be1e5de45a4453740b00dab6.setContent(html_f1ade6c37e50bcc477ba2193df759cf1);
+            
+        
+
+        circle_marker_09e205a0d91bb68dc77d542d21e57fdb.bindPopup(popup_fafd2386be1e5de45a4453740b00dab6)
+        ;
+
+        
+    
+    
+            circle_marker_09e205a0d91bb68dc77d542d21e57fdb.bindTooltip(
+                `<div>
+                     Southlake city: 18.1% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_946e8a7be3fb14e9f694d65f355d4274 = L.circleMarker(
+                [32.8501, -96.8003],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e0f3f8", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_18e126d77e72487bd39903c41c542d83 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b60308711e991d9f174aad790c35c639 = $(`<div id="html_b60308711e991d9f174aad790c35c639" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>University Park city</h4>                     <p><strong>Growth Rate:</strong> 3.4%</p>                     <p><strong>2022 Population:</strong> 25,179</p>                 </div>                 </div>`)[0];
+                popup_18e126d77e72487bd39903c41c542d83.setContent(html_b60308711e991d9f174aad790c35c639);
+            
+        
+
+        circle_marker_946e8a7be3fb14e9f694d65f355d4274.bindPopup(popup_18e126d77e72487bd39903c41c542d83)
+        ;
+
+        
+    
+    
+            circle_marker_946e8a7be3fb14e9f694d65f355d4274.bindTooltip(
+                `<div>
+                     University Park city: 3.4% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7dd1b067ca34cab2e72eced42bed77e8 = L.circleMarker(
+                [32.9265, -96.8961],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_943cc31f3bd8a3dca919503ed671dce9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a22c63ea896c0a0466862236708d052 = $(`<div id="html_4a22c63ea896c0a0466862236708d052" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Farmers Branch city</h4>                     <p><strong>Growth Rate:</strong> 36.4%</p>                     <p><strong>2022 Population:</strong> 35,985</p>                 </div>                 </div>`)[0];
+                popup_943cc31f3bd8a3dca919503ed671dce9.setContent(html_4a22c63ea896c0a0466862236708d052);
+            
+        
+
+        circle_marker_7dd1b067ca34cab2e72eced42bed77e8.bindPopup(popup_943cc31f3bd8a3dca919503ed671dce9)
+        ;
+
+        
+    
+    
+            circle_marker_7dd1b067ca34cab2e72eced42bed77e8.bindTooltip(
+                `<div>
+                     Farmers Branch city: 36.4% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_731e8b01851f17cac2966cfa83037ad6 = L.circleMarker(
+                [32.5921, -96.7561],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_b2e46f484617740650e56444ee6d6129 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79e576a35062de729d9bb7c140618469 = $(`<div id="html_79e576a35062de729d9bb7c140618469" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Lancaster city</h4>                     <p><strong>Growth Rate:</strong> 19.4%</p>                     <p><strong>2022 Population:</strong> 40,958</p>                 </div>                 </div>`)[0];
+                popup_b2e46f484617740650e56444ee6d6129.setContent(html_79e576a35062de729d9bb7c140618469);
+            
+        
+
+        circle_marker_731e8b01851f17cac2966cfa83037ad6.bindPopup(popup_b2e46f484617740650e56444ee6d6129)
+        ;
+
+        
+    
+    
+            circle_marker_731e8b01851f17cac2966cfa83037ad6.bindTooltip(
+                `<div>
+                     Lancaster city: 19.4% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a9d26a9b3f31c2bd86af76c15874da80 = L.circleMarker(
+                [32.5632, -97.1417],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d73027", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.368, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_4ed8e888fad074a83eb251b167b91139 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2a23ca7611007f71759a9f99d6b2eece = $(`<div id="html_2a23ca7611007f71759a9f99d6b2eece" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Mansfield city</h4>                     <p><strong>Growth Rate:</strong> 71.5%</p>                     <p><strong>2022 Population:</strong> 73,680</p>                 </div>                 </div>`)[0];
+                popup_4ed8e888fad074a83eb251b167b91139.setContent(html_2a23ca7611007f71759a9f99d6b2eece);
+            
+        
+
+        circle_marker_a9d26a9b3f31c2bd86af76c15874da80.bindPopup(popup_4ed8e888fad074a83eb251b167b91139)
+        ;
+
+        
+    
+    
+            circle_marker_a9d26a9b3f31c2bd86af76c15874da80.bindTooltip(
+                `<div>
+                     Mansfield city: 71.5% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0713130a9929dc565e94bd1689c412a0 = L.circleMarker(
+                [32.9029, -96.5639],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fee08b", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.3291, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_4b3e9677d66e4c77ae7a9ab7ebcef785 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb0eb4014fd289c5b19e5b4b59897915 = $(`<div id="html_fb0eb4014fd289c5b19e5b4b59897915" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Rowlett city</h4>                     <p><strong>Growth Rate:</strong> 15.3%</p>                     <p><strong>2022 Population:</strong> 63,291</p>                 </div>                 </div>`)[0];
+                popup_4b3e9677d66e4c77ae7a9ab7ebcef785.setContent(html_fb0eb4014fd289c5b19e5b4b59897915);
+            
+        
+
+        circle_marker_0713130a9929dc565e94bd1689c412a0.bindPopup(popup_4b3e9677d66e4c77ae7a9ab7ebcef785)
+        ;
+
+        
+    
+    
+            circle_marker_0713130a9929dc565e94bd1689c412a0.bindTooltip(
+                `<div>
+                     Rowlett city: 15.3% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ff03c87865d21bc8a8ccb85592d0e951 = L.circleMarker(
+                [32.9312, -96.4597],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fc8d59", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(feature_group_5eae7d46b233a0b87c1c8f06a94ede21);
+        
+    
+        var popup_a674b021de7824a2f0f76069747b0d8d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_43cc36cbd239eb8f35c77f623e4833e8 = $(`<div id="html_43cc36cbd239eb8f35c77f623e4833e8" style="width: 100.0%; height: 100.0%;">                 <div style="font-family: Arial;">                     <h4>Rockwall city</h4>                     <p><strong>Growth Rate:</strong> 42.7%</p>                     <p><strong>2022 Population:</strong> 47,859</p>                 </div>                 </div>`)[0];
+                popup_a674b021de7824a2f0f76069747b0d8d.setContent(html_43cc36cbd239eb8f35c77f623e4833e8);
+            
+        
+
+        circle_marker_ff03c87865d21bc8a8ccb85592d0e951.bindPopup(popup_a674b021de7824a2f0f76069747b0d8d)
+        ;
+
+        
+    
+    
+            circle_marker_ff03c87865d21bc8a8ccb85592d0e951.bindTooltip(
+                `<div>
+                     Rockwall city: 42.7% growth
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_87d6f2698d59f1c5ec938cde1b02c4ba_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_189a89ad8d836363f1ecf028cdd5823d,
+                },
+                overlays :  {
+                    "2009 Demographics" : feature_group_e69f90788ad2cb9c58bfe21134325ee2,
+                    "2022 Demographics" : feature_group_6e98787468888d157bbb6d6245be714b,
+                    "Population Growth" : feature_group_5eae7d46b233a0b87c1c8f06a94ede21,
+                },
+            };
+            let layer_control_87d6f2698d59f1c5ec938cde1b02c4ba = L.control.layers(
+                layer_control_87d6f2698d59f1c5ec938cde1b02c4ba_layers.base_layers,
+                layer_control_87d6f2698d59f1c5ec938cde1b02c4ba_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_ea05f43b1a6d8f87109c31501e898bd6);
+
+        
+</script>
+</html>
