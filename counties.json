@@ -1,0 +1,15 @@
+{
+  "north_texas_counties": {
+    "Dallas": "113",
+    "Tarrant": "439", 
+    "Collin": "085",
+    "Denton": "121",
+    "Grayson": "181",
+    "Rockwall": "397",
+    "Ellis": "139",
+    "Johnson": "251",
+    "Kaufman": "257",
+    "Parker": "367",
+    "Wise": "497"
+  }
+}

@@ -12,13 +12,14 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 ## Data Sources
 - U.S. Census Bureau American Community Survey (ACS) 5-Year Estimates
 - Years covered: 2009-2022
-- Geographic coverage: 10 North Texas counties
+- Geographic coverage: 11 North Texas counties
 
 ## Counties Included
 - Dallas County
 - Tarrant County (Fort Worth)
 - Collin County
 - Denton County
+- Grayson County (Sherman)
 - Rockwall County
 - Ellis County
 - Johnson County
@@ -77,8 +78,38 @@ This project collects and analyzes demographic data for cities in the Dallas-For
 - `north_texas_cities_dashboard.html` - Main interactive dashboard
 - `north_texas_cities_map.html` - Interactive demographic map
 
+### Configuration
+- **`counties.json`** - County configuration file defining target counties
+
 ### Data Files
 - `north_texas_demographics_cleaned_fixed.csv` - Clean processed dataset
+
+## Configuration File
+
+The project uses a JSON configuration file (`counties.json`) to define which counties to include in data collection:
+
+```json
+{
+  "north_texas_counties": {
+    "Dallas": "113",
+    "Tarrant": "439", 
+    "Collin": "085",
+    "Denton": "121",
+    "Grayson": "181",
+    "Rockwall": "397",
+    "Ellis": "139",
+    "Johnson": "251",
+    "Kaufman": "257",
+    "Parker": "367",
+    "Wise": "497"
+  }
+}
+```
+
+### Configuration Structure
+- **County Names**: Human-readable county names (e.g., "Dallas", "Tarrant")
+- **FIPS Codes**: Census Bureau county FIPS codes for API queries
+- **Automatic Discovery**: The collector queries all incorporated places within each county
 
 ## Key Findings
 
