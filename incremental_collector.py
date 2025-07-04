@@ -129,6 +129,9 @@ class CountyBasedDataCollector:
     def get_demographic_data(self, place_fips: str, year: int) -> Dict:
         """Get demographic data for a specific place and year"""
         
+        # Ensure FIPS code is zero-padded to 5 digits
+        place_fips_padded = place_fips.zfill(5)
+        
         # Define the variables we want to collect
         variables = [
             'B01003_001E',  # Total population
@@ -144,7 +147,6 @@ class CountyBasedDataCollector:
             'B04006_001E',  # Total ancestry (for Indian calculation)
             'B02001_006E',  # American Indian and Alaska Native alone
             'B04006_077E',  # Chinese ancestry
-            'B04006_123E',  # Vietnamese ancestry
             'B04006_024E',  # French ancestry
             'B04006_039E',  # Italian ancestry
             'B04006_079E',  # Korean ancestry
@@ -153,7 +155,7 @@ class CountyBasedDataCollector:
         url = f"{self.base_url}/{year}/acs/acs5"
         params = {
             'get': ','.join(['NAME'] + variables),
-            'for': f'place:{place_fips}',
+            'for': f'place:{place_fips_padded}',
             'in': 'state:48'
         }
         
@@ -183,20 +185,25 @@ class CountyBasedDataCollector:
                         'mexican': int(row[10]) if row[10] and row[10] != '-666666666' else 0,
                         'indian': int(row[12]) if row[12] and row[12] != '-666666666' else 0,
                         'chinese': int(row[13]) if row[13] and row[13] != '-666666666' else 0,
-                        'vietnamese': int(row[14]) if row[14] and row[14] != '-666666666' else 0,
-                        'french': int(row[15]) if row[15] and row[15] != '-666666666' else 0,
-                        'italian': int(row[16]) if row[16] and row[16] != '-666666666' else 0,
-                        'korean': int(row[17]) if row[17] and row[17] != '-666666666' else 0,
-                        'place_fips': place_fips,
+                        'vietnamese': 0,  # Not available in current ACS
+                        'french': int(row[14]) if row[14] and row[14] != '-666666666' else 0,
+                        'italian': int(row[15]) if row[15] and row[15] != '-666666666' else 0,
+                        'korean': int(row[16]) if row[16] and row[16] != '-666666666' else 0,
+                        'place_fips': place_fips,  # Store original FIPS for consistency
                         'year': year
                     }
                     
                     return result
+            elif response.status_code == 204:
+                # No data available for this place/year combination
+                print(f"(no data available)")
+                return None
+            else:
+                print(f"(API error: {response.status_code})")
+                return None
                     
-            return None
-            
         except Exception as e:
-            print(f"      ❌ Error getting data for {place_fips} in {year}: {e}")
+            print(f"(exception: {e})")
             return None
             
     def collect_data_for_places(self, places: List[Dict], years: List[int]) -> pd.DataFrame:
