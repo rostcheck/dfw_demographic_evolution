@@ -133,7 +133,7 @@ def create_expanded_map(df):
                top: 10px; left: 50px; width: 500px; height: 60px; 
                background-color: white; border: 2px solid grey; z-index:9999; 
                font-size: 18px; padding: 10px; font-family: Arial;">
-    North Texas Expanded Demographics (51 Cities, 2009-2022)
+    North Texas Expanded Demographics (2009-2022)
     </h2>
     '''
     m.get_root().html.add_child(folium.Element(title_html))
@@ -305,7 +305,7 @@ def create_dashboard(df):
 <!DOCTYPE html>
 <html>
 <head>
-    <title>North Texas Expanded Demographics - 51 Cities</title>
+    <title>North Texas Expanded Demographics</title>
     <meta charset="UTF-8">
     <style>
         body {{
@@ -388,7 +388,7 @@ def create_dashboard(df):
 <body>
     <div class="header">
         <h1>North Texas Expanded Demographics</h1>
-        <p>{total_cities} Cities in the Dallas-Fort Worth Region (2009-2022)</p>
+        <p>Dallas-Fort Worth Region (2009-2022)</p>
     </div>
     
     <div class="stats-grid">
@@ -411,8 +411,8 @@ def create_dashboard(df):
     </div>
     
     <div class="map-container">
-        <h2>Interactive Demographic Map - All {total_cities} Cities</h2>
-        <p>Explore all {total_cities} cities in the expanded Dallas-Fort Worth region. Toggle between 2009/2022 demographics and population growth patterns. Every city in the dataset is represented with detailed demographic breakdowns.</p>
+        <h2>Interactive Demographic Map</h2>
+        <p>Explore cities in the expanded Dallas-Fort Worth region. Toggle between 2009/2022 demographics and population growth patterns. Every city in the dataset is represented with detailed demographic breakdowns.</p>
         <iframe src="north_texas_cities_map.html"></iframe>
     </div>
     
