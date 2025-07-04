@@ -126,11 +126,11 @@ class CountyBasedDataCollector:
                 
         return target_places
         
-    def get_demographic_data(self, place_fips: str, year: int) -> Dict:
+    def get_demographic_data(self, place_fips, year: int) -> Dict:
         """Get demographic data for a specific place and year"""
         
-        # Ensure FIPS code is zero-padded to 5 digits
-        place_fips_padded = place_fips.zfill(5)
+        # Ensure FIPS code is zero-padded to 5 digits (handle both string and int input)
+        place_fips_padded = str(place_fips).zfill(5)
         
         # Define the variables we want to collect
         variables = [
