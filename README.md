@@ -2,6 +2,8 @@
 
 This project collects and analyzes demographic data for cities in the Dallas-Fort Worth metropolitan area over the past 20 years using U.S. Census Bureau data, with interactive web-based visualizations.
 
+![UI screenshot](blog/screenshot.jpg)
+
 ## Features
 
 - **Data Collection**: Automated Census API data collection for cities in specified counties
